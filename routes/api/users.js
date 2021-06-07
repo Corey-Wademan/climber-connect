@@ -4,8 +4,9 @@ const { check, validationResult } = require('express-validator');
 const User = require('../../models/User');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
 
-// GET api/users //Access Public //Register User
+// REGISTERS A NEW USER 
 router.post('/',
     [
         check('name', 'Name is Required')
@@ -44,6 +45,14 @@ router.post('/',
             user.password = await bcrypt.hash(password, salt);
 
             await user.save();
+
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            }
+
+            jwt.sign(payload, )
 
             res.send('User Registered')
         } catch(error) {
