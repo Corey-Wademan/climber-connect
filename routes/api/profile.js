@@ -61,10 +61,6 @@ router.post('/', [auth, [
         profileFields.climbing_type = climbing_type.split(',').map(hobby => hobby.trim());
     }
 
-    // Build leads object
-
-    // Build follows object
-
     // Build social object 
     profileFields.social = {};
     if (youtube) profileFields.social.youtube = youtube;
@@ -72,27 +68,46 @@ router.post('/', [auth, [
     if (instagram) profileFields.social.instagram = instagram;
     if (facebook) profileFields.social.facebook = facebook;
 
-    try {
-        let profile = await Profile.findOne({ user: req.user.id });
-        if (profile) {
-            // Update
-            profile = await Profile.findOneAndUpdate({ user: req.user.id }, { $set: profileFields }, { new: true });
+        try {
+            let profile = await Profile.findOne({ user: req.user.id });
+            if (profile) {
+                // Update
+                profile = await Profile.findOneAndUpdate({ user: req.user.id }, { $set: profileFields }, { new: true });
 
-            return res.json(profile);
+                return res.json(profile);
+            }
+
+            // Create
+            profile = new Profile(profileFields);
+            await profile.save();
+            res.json(profile);
+        } catch (err) {
+            console.log(err.message)
+            res.status(500).send('Server Error')
         }
+});
 
-        // Create
-        profile = new Profile(profileFields);
+router.put('/leads', auth, async (req, res) => {
+
+    // Build leads object
+    const { sportLead, tradLead } = req.body;
+    const leads = { sportLead, tradLead };
+
+    /* Build follows object
+    profileFields.follows = {};
+    const { sportFollow, tradFollow } = req.body;
+    const follows = { sportFollow, tradFollow }; */
+
+    try {
+        const profile = Profile.findOne({ user: req.user.id });
+        profile.leads.unshift(req.body);
         await profile.save();
         res.json(profile);
     } catch (err) {
         console.log(err.message)
-        res.status(500).send('Server Error')
+        res.status(500).send('Server Error');
     }
 
-    console.log(facebook)
-    res.send('Good')
-    
 });
 
 module.exports = router;

@@ -18,7 +18,6 @@ const ProfileSchema = new mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: ["Male", "Female"],
         required: true
     },
     climbing_type: {
@@ -39,24 +38,28 @@ const ProfileSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    leads: {
-        sport: {
-            type: String
-        },
-        trad: {
-            type: String
+    leads: [
+        {
+            sportLead: {
+                type: String
+            },
+            tradLead: {
+                type: String
+            }
         }
-    },
-    follows:{
-            sport: {
+    ],
+    follows: [
+        {
+            sportFollow: {
                 type: String,
                 enum: ["5.7", "5.8", "5.9", "5.10", "5.11", "5.12", "5.13", "5.14"]
-        },
-            trad: {
+            },
+            tradFollow: {
                 type: String,
                 enum: ["5.7", "5.8", "5.9", "5.10", "5.11", "5.12", "5.13", "5.14"]
             }
-    },
+        }
+    ],
     best_time: {
         type: String,
         required: true
