@@ -13,7 +13,7 @@ const ProfileSchema = new mongoose.Schema({
     },
     climbing_location: {
         type: String,
-        enum: ["Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Guam", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Minor Outlying Islands", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "U.S. Virgin Islands", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"],
+        enum: ["Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Guam", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"],
         required: true
     },
     gender: {
@@ -22,15 +22,14 @@ const ProfileSchema = new mongoose.Schema({
         required: true
     },
     climbing_type: {
-        type: String,
-        enum: ["Boulder", "Sport", "Trad", "Toprope", "Gym"]
+        type: [String]
     },
     member_since: {
         type: Date,
         default: Date.now
     },
     climbing_since: {
-        type: Date
+        type: Date,
     },
     type_climber: {
         type: String,
@@ -40,8 +39,15 @@ const ProfileSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    leads: [
-        {
+    leads: {
+        sport: {
+            type: String
+        },
+        trad: {
+            type: String
+        }
+    },
+    follows:{
             sport: {
                 type: String,
                 enum: ["5.7", "5.8", "5.9", "5.10", "5.11", "5.12", "5.13", "5.14"]
@@ -50,29 +56,16 @@ const ProfileSchema = new mongoose.Schema({
                 type: String,
                 enum: ["5.7", "5.8", "5.9", "5.10", "5.11", "5.12", "5.13", "5.14"]
             }
-        }
-    ],
-    follows: [
-        {
-            sport: {
-                type: String,
-                enum: ["5.7", "5.8", "5.9", "5.10", "5.11", "5.12", "5.13", "5.14"]
-        },
-            trad: {
-                type: String,
-                enum: ["5.7", "5.8", "5.9", "5.10", "5.11", "5.12", "5.13", "5.14"]
-            }
-        }
-    ],
+    },
     best_time: {
         type: String,
         required: true
     },
-    other_hobbies: {
-        type: [String]
-    },
     additional_info: {
         type: String
+    },
+    other_hobbies: {
+        type: [String]
     },
     social: {
         youtube: {

@@ -30,7 +30,7 @@ router.post('/', [auth, [
     check('gender', 'Gender is required').exists(),
     check('type_climber', 'Your climbing style is required').exists(),
     check('preferred_belay_device', 'Your preferred belay device is required').exists(),
-    check('best_time', 'The best times for your climbing availabilty is required').notEmpty()
+    check('best_time', 'The best times for your climbing availabilty is required').notEmpty(),
 
 ]], async (req, res) => {
     const errors = validationResult(req);
@@ -39,22 +39,59 @@ router.post('/', [auth, [
     }
 
     // Destructure Profile Fields
-    const { location, climbing_type, climbing_since, other_hobbies, additional_info, youtube, twitter, instagram, facebook } = req.body;
+    const { location, climbing_type, other_hobbies, additional_info, youtube, twitter, instagram, facebook, best_time, preferred_belay_device,type_climber, gender, climbing_location, age, climbing_since } = req.body;
 
     // Build Profile Object
     const profileFields = {};
     profileFields.user = req.user.id;
+    if (age) profileFields.age = age;
     if (location) profileFields.location = location;
+    if (climbing_location) profileFields.climbing_location = climbing_location;
+    if (gender) profileFields.gender = gender;
     if (climbing_type) profileFields.climbingType = climbing_type;
-    if (climbing_since) profileFields.climbingSince = climbing_since;
+    if (climbing_since) profileFields.climbing_since = climbing_since;
+    if (type_climber) profileFields.type_climber = type_climber;
+    if (preferred_belay_device) profileFields.preferred_belay_device = preferred_belay_device;
+    if (best_time) profileFields.best_time = best_time;
     if (additional_info) profileFields.additionalInfo = additional_info;
-    if (youtube) profileFields.youtube = youtube;
-    if (twitter) profileFields.twitter = twitter;
-    if (instagram) profileFields.instagram = instagram;
-    if (facebook) profileFields.facebook = facebook;
     if (other_hobbies) {
         profileFields.otherHobbies = other_hobbies.split(',').map(hobby => hobby.trim());
     }
+    if (climbing_type) {
+        profileFields.climbing_type = climbing_type.split(',').map(hobby => hobby.trim());
+    }
+
+    // Build leads object
+
+    // Build follows object
+
+    // Build social object 
+    profileFields.social = {};
+    if (youtube) profileFields.social.youtube = youtube;
+    if (twitter) profileFields.social.twitter = twitter;
+    if (instagram) profileFields.social.instagram = instagram;
+    if (facebook) profileFields.social.facebook = facebook;
+
+    try {
+        let profile = await Profile.findOne({ user: req.user.id });
+        if (profile) {
+            // Update
+            profile = await Profile.findOneAndUpdate({ user: req.user.id }, { $set: profileFields }, { new: true });
+
+            return res.json(profile);
+        }
+
+        // Create
+        profile = new Profile(profileFields);
+        await profile.save();
+        res.json(profile);
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('Server Error')
+    }
+
+    console.log(facebook)
+    res.send('Good')
     
 });
 
