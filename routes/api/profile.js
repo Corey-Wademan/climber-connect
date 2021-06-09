@@ -73,13 +73,14 @@ router.post('/', [auth, [
             if (profile) {
                 // Update
                 profile = await Profile.findOneAndUpdate({ user: req.user.id }, { $set: profileFields }, { new: true });
-
+                console.log('Profile updated')
                 return res.json(profile);
             }
 
             // Create
             profile = new Profile(profileFields);
             await profile.save();
+            console.log('Profile created')
             res.json(profile);
         } catch (err) {
             console.log(err.message)
@@ -87,20 +88,16 @@ router.post('/', [auth, [
         }
 });
 
+// Update route for trad/sport leading api/profile/leads
 router.put('/leads', auth, async (req, res) => {
 
     // Build leads object
     const { sportLead, tradLead } = req.body;
-    const leads = { sportLead, tradLead };
-
-    /* Build follows object
-    profileFields.follows = {};
-    const { sportFollow, tradFollow } = req.body;
-    const follows = { sportFollow, tradFollow }; */
+    const leadsObj = { sportLead, tradLead };
 
     try {
-        const profile = Profile.findOne({ user: req.user.id });
-        profile.leads.unshift(req.body);
+        const profile = await Profile.findOne({ user: req.user.id });
+        profile.leads.unshift(leadsObj);
         await profile.save();
         res.json(profile);
     } catch (err) {
@@ -108,6 +105,24 @@ router.put('/leads', auth, async (req, res) => {
         res.status(500).send('Server Error');
     }
 
+});
+
+// Update route for trad/sport following api/profile/follows
+router.put('/follows', auth, async (req, res) => {
+
+    // Build follows object
+    const { sportFollow, tradFollow } = req.body;
+    const followsObj = { sportFollow, tradFollow };
+    
+    try {
+        const profile = await Profile.findOne({ user: req.user.id });
+        profile.follows.unshift(followsObj);
+        await profile.save();
+        res.json(profile);
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('Server Error');
+    }
 });
 
 module.exports = router;

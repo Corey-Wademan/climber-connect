@@ -45,18 +45,16 @@ const ProfileSchema = new mongoose.Schema({
             },
             tradLead: {
                 type: String
-            }
+            },
         }
     ],
     follows: [
         {
             sportFollow: {
                 type: String,
-                enum: ["5.7", "5.8", "5.9", "5.10", "5.11", "5.12", "5.13", "5.14"]
             },
             tradFollow: {
                 type: String,
-                enum: ["5.7", "5.8", "5.9", "5.10", "5.11", "5.12", "5.13", "5.14"]
             }
         }
     ],
