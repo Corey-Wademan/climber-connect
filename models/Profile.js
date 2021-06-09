@@ -9,8 +9,7 @@ const ProfileSchema = new mongoose.Schema({
         required: true
     },
     location: {
-        type: String,
-        required: true
+        type: String
     },
     climbing_location: {
         type: String,
@@ -73,7 +72,7 @@ const ProfileSchema = new mongoose.Schema({
         type: [String]
     },
     additional_info: {
-        type: [String]
+        type: String
     },
     social: {
         youtube: {
