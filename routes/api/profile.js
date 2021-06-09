@@ -107,7 +107,7 @@ router.put('/leads', auth, async (req, res) => {
 
 });
 
-// Update route for trad/sport following api/profile/follows
+// Update route for trad/sport follow api/profile/follows
 router.put('/follows', auth, async (req, res) => {
 
     // Build follows object
@@ -124,5 +124,37 @@ router.put('/follows', auth, async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
+
+// Delete route for trad/sport lead api/profile/leads/:lead_id
+router.delete('/leads/:lead_id', auth, async (req, res) => {
+    try {
+        const profile = await Profile.findOne({ user: req.user.id });
+        // Get index
+        const deleteIndex = profile.leads.map(item => item.id).indexOf(req.params.lead_id);
+        profile.leads.splice(deleteIndex, 1);
+
+        await profile.save();
+        res.json(profile);
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('Server Error');
+    }
+});
+
+// Delete route for trad/sport follow api/profile/follows/:follow_id
+router.delete('/follows/:follow_id', auth, async (req, res) => {
+    try {
+        const profile = await Profile.findOne({ user: req.user.id });
+        // Get index
+        const deleteIndex = profile.follows.map(item => item.id).indexOf(req.params.follow_id);
+        profile.follows.splice(deleteIndex, 1);
+        
+        await profile.save();
+        res.json(profile);
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('Server Error');
+    }
+}); 
 
 module.exports = router;
