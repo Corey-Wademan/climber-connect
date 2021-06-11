@@ -22,6 +22,18 @@ router.get('/me', auth, async (req, res) => {
     }
 });
 
+// GET api/profile/ 
+// Get all profiles // Public 
+router.get('/', async (req, res) => {
+    try {
+        const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+        res.json(profiles)
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send("Server Error")
+    }
+});
+
 // POST api/profile 
 // Create or update user profile // Private
 router.post('/', [auth, [
@@ -55,7 +67,7 @@ router.post('/', [auth, [
     if (best_time) profileFields.best_time = best_time;
     if (additional_info) profileFields.additionalInfo = additional_info;
     if (other_hobbies) {
-        profileFields.otherHobbies = other_hobbies.split(',').map(hobby => hobby.trim());
+        profileFields.other_hobbies = other_hobbies.split(',').map(hobby => hobby.trim());
     }
     if (climbing_type) {
         profileFields.climbing_type = climbing_type.split(',').map(hobby => hobby.trim());
@@ -166,9 +178,9 @@ router.delete('/follows/:follow_id', auth, async (req, res) => {
 router.delete('/', auth, async (req, res) => {
     try {
 
-        //Remove Profile from schema
+        //Remove Profile from db
         await Profile.findOneAndRemove({ user: req.user.id });
-        // Remove User from schema
+        // Remove User from db
         await User.findOneAndRemove({ _id: req.user.id });
 
         res.json({msg: 'User removed'});
