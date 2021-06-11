@@ -88,7 +88,8 @@ router.post('/', [auth, [
         }
 });
 
-// Update route for trad/sport leading api/profile/leads
+// Update route for trad/sport leading 
+// api / profile / leads
 router.put('/leads', auth, async (req, res) => {
 
     // Build leads object
@@ -107,7 +108,8 @@ router.put('/leads', auth, async (req, res) => {
 
 });
 
-// Update route for trad/sport follow api/profile/follows
+// Update route for trad/sport follow 
+// api / profile / follows
 router.put('/follows', auth, async (req, res) => {
 
     // Build follows object
@@ -125,7 +127,8 @@ router.put('/follows', auth, async (req, res) => {
     }
 });
 
-// Delete route for trad/sport lead api/profile/leads/:lead_id
+// Delete route for trad/sport lead 
+// api / profile / leads /: lead_id
 router.delete('/leads/:lead_id', auth, async (req, res) => {
     try {
         const profile = await Profile.findOne({ user: req.user.id });
@@ -141,7 +144,8 @@ router.delete('/leads/:lead_id', auth, async (req, res) => {
     }
 });
 
-// Delete route for trad/sport follow api/profile/follows/:follow_id
+// Delete route for trad/sport follow 
+// api/profile/follows/:follow_id
 router.delete('/follows/:follow_id', auth, async (req, res) => {
     try {
         const profile = await Profile.findOne({ user: req.user.id });
@@ -151,6 +155,23 @@ router.delete('/follows/:follow_id', auth, async (req, res) => {
         
         await profile.save();
         res.json(profile);
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('Server Error');
+    }
+});
+
+// Delete route for trad/sport follow 
+// api/profile/
+router.delete('/', auth, async (req, res) => {
+    try {
+
+        //Remove Profile from schema
+        await Profile.findOneAndRemove({ user: req.user.id });
+        // Remove User from schema
+        await User.findOneAndRemove({ _id: req.user.id });
+
+        res.json({msg: 'User removed'});
     } catch (err) {
         console.log(err.message)
         res.status(500).send('Server Error');
