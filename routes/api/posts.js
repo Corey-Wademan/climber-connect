@@ -6,7 +6,7 @@ const Post = require('../../models/Post');
 const User = require('../../models/User');
 const Profile = require('../../models/Profile');
 
-// POST api/posts //access Public //Test Route
+// POST api/posts //access Public //Make a post
 router.post('/', [auth, [
     check('text', 'Text is required').notEmpty()
 ]], async (req, res) => {
@@ -18,12 +18,12 @@ router.post('/', [auth, [
     try {
         const user = await User.findById(req.user.id).select('-password');
 
-        const newPost = {
+        const newPost = new Post({
             text: req.body.text,
             name: user.name,
             avatar: user.avatar,
             user: req.user.id
-        };
+        });
 
         const post = await newPost.save();
         res.json(post);
@@ -33,6 +33,19 @@ router.post('/', [auth, [
     }
      
     
+});
+
+// GET api/posts //access public (add auth if only posts can be viewed from account) //Get all posts 
+router.get('/', async (req, res) => {
+
+    try {
+        const posts = await Post.find().sort({date: -1});
+        res.json(posts);
+    } catch(err) {
+        console.log(err.message)
+        res.status(500).send("Server Error");
+    }
+
 });
 
 module.exports = router;
