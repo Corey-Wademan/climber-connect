@@ -48,4 +48,52 @@ router.get('/', async (req, res) => {
 
 });
 
+// GET api/posts/:id //access public (add auth if only posts can be viewed from account) //Get post by id 
+router.get('/:id', async (req, res) => {
+
+    try {
+        const post = await Post.findById(req.params.id);
+
+        // Check if post exists
+        if (!post) {
+            return res.status(404).json({msg: 'Post not found'});
+        }
+        res.json(post);
+    } catch(err) {
+        console.log(err.message)
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({msg: 'Post not found'});
+        }
+        res.status(500).send("Server Error");
+    }
+
+});
+
+// Delete a post api/posts/:id //access PRIVATE
+router.delete('/:id', auth, async (req, res) => {
+
+    try {
+        const post = await Post.findById(req.params.id);
+
+        // Check if post exists 
+        if (!post) {
+            return res.status(404).json({msg: 'Post not found'});
+        }
+
+        // Check user
+        if(post.user.toString() !== req.user.id) {
+            return res.status(401).json({msg: "User not authorized"})
+        } 
+
+        await post.remove();
+        res.json({msg: 'Post removed'})
+    } catch (error) {
+        console.log(error.message);
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({msg: 'Post not found'});
+        }
+        res.status(500).send('Server Error')
+    }
+});
+
 module.exports = router;
