@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const PostSchema = new mongoose.Schema({
     user: {
-        type: PostSchema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
     }, 
     text: {
@@ -17,7 +17,7 @@ const PostSchema = new mongoose.Schema({
     likes: [
         {
             user: {
-                type: PostSchema.Types.ObjectId,
+                type: mongoose.Schema.Types.ObjectId,
                 ref: 'users'
             }
         }
@@ -25,7 +25,7 @@ const PostSchema = new mongoose.Schema({
     comments: [
         {
             user: {
-                type: PostSchema.Types.ObjectId,
+                type: mongoose.Schema.Types.ObjectId,
                 ref: 'users'
             },
             text: {
@@ -47,4 +47,4 @@ const PostSchema = new mongoose.Schema({
     }
 });
 
-module.exports = Post = mongoose.model('posts', PostSchema);
+module.exports = Post = mongoose.model('post', PostSchema);
