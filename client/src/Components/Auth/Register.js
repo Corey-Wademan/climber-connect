@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import {Link} from 'react-router-dom'
 
 const Register = () => {
     const [formData, setFormData] = useState( {
@@ -10,15 +11,15 @@ const Register = () => {
 
     const { name, email, password, password2 } = formData;
 
-    // Variable handler that takes name att. from input, sets its value as the key for the function
+    // Variable handler that takes name att.(e.target.name) from input, sets its value as the key for the output
     const onChange = e => setFormData( { ...formData, [e.target.name]: e.target.value } );
     
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault();
         if ( password !== password2 ) {
             console.log('Passwords do not match')
         } else {
-            console.log( formData );
+            console.log('User Registered')
         }
     }
 
@@ -75,7 +76,7 @@ const Register = () => {
             <input type="submit" className="btn btn-primary" value="Register" />
       </form>
       <p className="my-1">
-        Already have an account? <a href="login.html">Sign In</a>
+        Already have an account? <Link to="/login">Sign In</Link>
       </p> 
         </>
     )
