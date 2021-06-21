@@ -26,13 +26,8 @@ const ProfileSchema = new mongoose.Schema({
     climbing_since: {
         type: Date,
     },
-    type_climber: {
-        type: String,
-        required: true
-    },
     preferred_belay_device: {
-        type: String,
-        required: true
+        type: String
     },
     leads: [
         {

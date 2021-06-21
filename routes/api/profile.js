@@ -58,8 +58,6 @@ router.post('/', [auth, [
     check('age', 'Age is required', 'Must be a number').notEmpty().isNumeric(),
     check('location', 'The location you currently climb in is required').notEmpty(),
     check('gender', 'Gender is required').exists(),
-    check('type_climber', 'Your climbing style is required').exists(),
-    check('preferred_belay_device', 'Your preferred belay device is required').exists(),
 ]], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -67,7 +65,7 @@ router.post('/', [auth, [
     }
 
     // Destructure Profile Fields
-    const { location, climbing_type, additional_info, youtube, twitter, instagram, facebook, best_time, preferred_belay_device,type_climber, gender, age, climbing_since } = req.body;
+    const { location, climbing_type, additional_info, youtube, twitter, instagram, facebook, best_time, preferred_belay_device, gender, age, climbing_since } = req.body;
 
     // Build Profile Object
     const profileFields = {};
@@ -77,12 +75,11 @@ router.post('/', [auth, [
     if (gender) profileFields.gender = gender;
     if (climbing_type) profileFields.climbingType = climbing_type;
     if (climbing_since) profileFields.climbing_since = climbing_since;
-    if (type_climber) profileFields.type_climber = type_climber;
     if (preferred_belay_device) profileFields.preferred_belay_device = preferred_belay_device;
     if (best_time) profileFields.best_time = best_time;
     if (additional_info) profileFields.additionalInfo = additional_info;
     if (climbing_type) {
-        profileFields.climbing_type = climbing_type.split(',').map(hobby => hobby.trim());
+        profileFields.climbing_type = climbing_type.split(', ');
     }
 
     // Build social object 

@@ -1,9 +1,11 @@
-import React, {Fragment, useState} from 'react'
+import React, { Fragment, useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { states, grades } from './ProfileSelectors';
+import { createProfile } from '../../actions/profile';
 
-const CreateProfile = props => {
+const CreateProfile = ({createProfile, history}) => {
    const [formData, setFormData] = useState({
       age: '',
       location: '',
@@ -12,14 +14,10 @@ const CreateProfile = props => {
       best_time: '',
       climbing_since: '',
       climbing_type: [],
-      leads: [
-         { sportLead: '' },
-         { tradLead: '' }
-      ],
-      follows: [
-         { sportFollow: '' },
-         { tradFollow: '' }
-      ],
+      sportLead: '',
+      tradLead: '',
+      sportFollow: '',
+      tradFollow: '',
       additional_info: '',
       twitter: '',
       facebook: '',
@@ -47,6 +45,11 @@ const CreateProfile = props => {
 
    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
+   const onSubmit = e => {
+      e.preventDefault();
+      createProfile(formData, history)
+   }
+
    return (
       <Fragment>
          <h1 className="large text-primary">
@@ -56,7 +59,7 @@ const CreateProfile = props => {
         <i className="fas fa-user"></i> Let's add some info to your climbing profile
       </p>
       <small>* = required field</small>
-      <form className="form">
+      <form className="form" onSubmit={e => onSubmit(e)}>
          
         <div className="form-group">
          <select required name="location" value={location} onChange={e => onChange(e)}>
@@ -75,11 +78,11 @@ const CreateProfile = props => {
             
         <div className='form-group'>
            <h1> Climbing Types</h1>
-            <input type="checkbox" id="trad" name="trad" value={climbing_type} onChange={e => onChange(e)}/>
+            <input type="checkbox" id="trad" name="climbing_type" value={climbing_type} onChange={e => onChange(e)}/>
             <label for="trad"> Trad</label><br></br>
-            <input type="checkbox" id="sport" name="sport" value={climbing_type} onChange={e => onChange(e)} />
+            <input type="checkbox" id="sport" name="climbing_type" value={climbing_type} onChange={e => onChange(e)} />
             <label for="sport"> Sport</label><br></br>
-            <input type="checkbox" id="boulder" name="boulder" value={climbing_type} onChange={e => onChange(e)}/>
+            <input type="checkbox" id="boulder" name="climbing_type" value={climbing_type} onChange={e => onChange(e)}/>
             <label for="boulder"> Boulder</label>
         </div>
         
@@ -120,8 +123,8 @@ const CreateProfile = props => {
         </div>
          
         <div className="form-group">
-         <select required type="text" name="preferred_belay_device" value={preferred_belay_device} onChange={e => onChange(e)}>
-            <option value="" disabled selected>*Belay Device</option>
+         <select type="text" name="preferred_belay_device" value={preferred_belay_device} onChange={e => onChange(e)}>
+            <option value="" disabled selected>Belay Device</option>
             <option value='atc'>ATC</option>
             <option value='assisted_braking'>Assisted Braking</option>
          </select>
@@ -189,7 +192,7 @@ const CreateProfile = props => {
 }
 
 CreateProfile.propTypes = {
-
+   createProfile: PropTypes.func.isRequired,
 }
 
-export default connect()(CreateProfile)
+export default connect(null, {createProfile})(withRouter(CreateProfile))
