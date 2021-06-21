@@ -55,14 +55,10 @@ const ProfileSchema = new mongoose.Schema({
         }
     ],
     best_time: {
-        type: String,
-        required: true
+        type: String
     },
     additional_info: {
         type: String
-    },
-    other_hobbies: {
-        type: [String]
     },
     social: {
         youtube: {

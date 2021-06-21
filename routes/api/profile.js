@@ -55,13 +55,11 @@ router.get('/user/:user_id', async (req, res) => {
 // POST api/profile 
 // Create or update user profile // Private
 router.post('/', [auth, [
-    check('age', 'Age is required').notEmpty(),
+    check('age', 'Age is required', 'Must be a number').notEmpty().isNumeric(),
     check('location', 'The location you currently climb in is required').notEmpty(),
     check('gender', 'Gender is required').exists(),
     check('type_climber', 'Your climbing style is required').exists(),
     check('preferred_belay_device', 'Your preferred belay device is required').exists(),
-    check('best_time', 'The best times for your climbing availabilty is required').notEmpty(),
-
 ]], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -69,7 +67,7 @@ router.post('/', [auth, [
     }
 
     // Destructure Profile Fields
-    const { location, climbing_type, other_hobbies, additional_info, youtube, twitter, instagram, facebook, best_time, preferred_belay_device,type_climber, gender, age, climbing_since } = req.body;
+    const { location, climbing_type, additional_info, youtube, twitter, instagram, facebook, best_time, preferred_belay_device,type_climber, gender, age, climbing_since } = req.body;
 
     // Build Profile Object
     const profileFields = {};
@@ -83,9 +81,6 @@ router.post('/', [auth, [
     if (preferred_belay_device) profileFields.preferred_belay_device = preferred_belay_device;
     if (best_time) profileFields.best_time = best_time;
     if (additional_info) profileFields.additionalInfo = additional_info;
-    if (other_hobbies) {
-        profileFields.other_hobbies = other_hobbies.split(',').map(hobby => hobby.trim());
-    }
     if (climbing_type) {
         profileFields.climbing_type = climbing_type.split(',').map(hobby => hobby.trim());
     }
