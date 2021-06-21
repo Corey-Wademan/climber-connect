@@ -5,7 +5,7 @@ const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const {check, validationResult} = require('express-validator')
 
-
+ 
 // GET api/profile/me 
 // Gets current users profile // Private 
 router.get('/me', auth, async (req, res) => {
@@ -56,7 +56,7 @@ router.get('/user/:user_id', async (req, res) => {
 // Create or update user profile // Private
 router.post('/', [auth, [
     check('age', 'Age is required').notEmpty(),
-    check('climbing_location', 'The location you currently climb in is required').notEmpty(),
+    check('location', 'The location you currently climb in is required').notEmpty(),
     check('gender', 'Gender is required').exists(),
     check('type_climber', 'Your climbing style is required').exists(),
     check('preferred_belay_device', 'Your preferred belay device is required').exists(),
@@ -69,14 +69,13 @@ router.post('/', [auth, [
     }
 
     // Destructure Profile Fields
-    const { location, climbing_type, other_hobbies, additional_info, youtube, twitter, instagram, facebook, best_time, preferred_belay_device,type_climber, gender, climbing_location, age, climbing_since } = req.body;
+    const { location, climbing_type, other_hobbies, additional_info, youtube, twitter, instagram, facebook, best_time, preferred_belay_device,type_climber, gender, age, climbing_since } = req.body;
 
     // Build Profile Object
     const profileFields = {};
     profileFields.user = req.user.id;
     if (age) profileFields.age = age;
     if (location) profileFields.location = location;
-    if (climbing_location) profileFields.climbing_location = climbing_location;
     if (gender) profileFields.gender = gender;
     if (climbing_type) profileFields.climbingType = climbing_type;
     if (climbing_since) profileFields.climbing_since = climbing_since;
