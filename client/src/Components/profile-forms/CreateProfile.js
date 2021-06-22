@@ -14,10 +14,14 @@ const CreateProfile = ({createProfile, history}) => {
       best_time: '',
       climbing_since: '',
       climbing_type: [],
-      sportLead: '',
-      tradLead: '',
-      sportFollow: '',
-      tradFollow: '',
+      leads: [
+         {sportLead: ''},
+         {tradLead: ''},
+      ],
+      follows: [
+         { sportFollow: '' },
+         {tradFollow: ''},
+      ],
       additional_info: '',
       twitter: '',
       facebook: '',
@@ -44,6 +48,12 @@ const CreateProfile = ({createProfile, history}) => {
    
 
    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+   // Currently takes in the last of selected values
+   // Change to take in all values selected
+   const updateClimbTypes = (e) => {
+      setFormData({...formData, climbing_type: e.target.value})
+   };
 
    const onSubmit = e => {
       e.preventDefault();
@@ -78,11 +88,11 @@ const CreateProfile = ({createProfile, history}) => {
             
         <div className='form-group'>
            <h1> Climbing Types</h1>
-            <input type="checkbox" id="trad" name="climbing_type" value={climbing_type} onChange={e => onChange(e)}/>
+            <input type="checkbox" id="trad" name="trad" value='trad' onChange={e => updateClimbTypes(e)}/>
             <label for="trad"> Trad</label><br></br>
-            <input type="checkbox" id="sport" name="climbing_type" value={climbing_type} onChange={e => onChange(e)} />
+            <input type="checkbox" id="sport" name="sport" value='sport' onChange={e => updateClimbTypes(e)} />
             <label for="sport"> Sport</label><br></br>
-            <input type="checkbox" id="boulder" name="climbing_type" value={climbing_type} onChange={e => onChange(e)}/>
+               <input type="checkbox" id="boulder" name="boulder" value='boulder' onChange={e => updateClimbTypes(e)}/>
             <label for="boulder"> Boulder</label>
         </div>
         
