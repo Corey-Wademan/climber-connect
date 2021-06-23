@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import spinner from '../../img/spinner.gif';
 
-export default () => (
+export const Spinner = () => (
    <Fragment>
       <img
          src={spinner}

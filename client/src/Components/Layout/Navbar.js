@@ -40,7 +40,7 @@ const Navbar = ({ auth: { isAuth, loading }, logout }) => {
       <nav className="navbar bg-dark">
         <h1>
           <Link to="/">
-              <img className='logo' src={logo}/> Climbing Connecter
+              <img alt='logo' className='logo' src={logo}/> Climbing Connecter
           </Link>
           </h1>
         {!loading &&

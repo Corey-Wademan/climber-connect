@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { states, grades, climbingTypes } from './ProfileSelectors';
-import { createProfile } from '../../actions/profile';
+import { createProfile, getCurrentProfile } from '../../actions/profile';
 
-const CreateProfile = ({createProfile, history}) => {
+const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProfile, history}) => {
    const [formData, setFormData] = useState({
       age: '',
       location: '',
@@ -26,6 +26,31 @@ const CreateProfile = ({createProfile, history}) => {
    });
    const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
+   useEffect(() => {
+      getCurrentProfile();
+
+      setFormData({
+         age: loading || !profile.age ? '' : profile.age,
+         location: loading || !profile.location ? '' : profile.location,
+         gender: loading || !profile.gender ? '' : profile.gender,
+         preferred_belay_device: loading || !profile.preferred_belay_device ? '' : profile.preferred_belay_device,
+         best_time: loading || !profile.best_time ? '' : profile.best_time,
+         climbing_since: loading || !profile.climbing_since ? '' : profile.climbing_since,
+         climbing_type: loading || !profile.climbing_type ? '' : profile.climbing_type,
+         tradLead: loading || !profile.tradLead ? '' : profile.tradLead,
+         sportLead: loading || !profile.sportLead ? '' : profile.sportLead,
+         tradFollow: loading || !profile.tradFollow ? '' : profile.tradFollow,
+         sportFollow: loading || !profile.sportFollow ? '' : profile.sportFollow,
+         additional_info: loading || !profile.additional_info ? '' : profile.additional_info,
+         twitter: loading || !profile.twitter ? '' : profile.twitter,
+         facebook: loading || !profile.facebook ? '' : profile.facebook,
+         instagram: loading || !profile.instagram ? '' : profile.instagram,
+         youtube: loading || !profile.youtube ? '' : profile.youtube,
+
+      })
+
+   }, [loading]);
+
    const { age, location, gender, preferred_belay_device, best_time, climbing_type, climbing_since, sportLead, tradLead, sportFollow, tradFollow, additional_info, twitter, facebook, instagram, youtube } = formData;
 
    // Max Date Logic For Calendar Input
@@ -41,7 +66,6 @@ const CreateProfile = ({createProfile, history}) => {
       } 
 
    today = yyyy+'-'+mm+'-'+dd;
-   
 
    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -65,7 +89,7 @@ const CreateProfile = ({createProfile, history}) => {
 
    const onSubmit = e => {
       e.preventDefault();
-      createProfile(formData, history)
+      createProfile(formData, history, true)
    }
 
    return (
@@ -250,8 +274,17 @@ const CreateProfile = ({createProfile, history}) => {
    )
 }
 
-CreateProfile.propTypes = {
+const mapStateToProps = state => ({
+   profile: state.profile
+})
+
+EditProfile.propTypes = {
    createProfile: PropTypes.func.isRequired,
+   getCurrentProfile: PropTypes.func.isRequired,
+   profile: PropTypes.object.isRequired,
 }
 
-export default connect(null, {createProfile})(withRouter(CreateProfile))
+export default connect(
+   mapStateToProps,
+   { createProfile, getCurrentProfile })
+   (withRouter(EditProfile))
