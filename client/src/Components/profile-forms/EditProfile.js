@@ -122,12 +122,12 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
                </option>
             ))}
          </select>
-         <small className="form-text">Your location to find other climbers near you </small>
+         <small className="form-text">* Your location to find other climbers near you </small>
         </div>
         
         <div className="form-group">
          <input type="text" placeholder="*Age" name="age" value={age} onChange={e => onChange(e)}/>
-         <small className="form-text">Helps for identifying & matching similarly aged users</small>
+         <small className="form-text">* Helps for identifying & matching similarly aged users</small>
         </div>
             
          <div className='form-group'>
@@ -211,6 +211,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
             <option value='assisted_braking'>Assisted Braking</option>
             <option value='figure-eight'>Figure Eight</option>
          </select>
+         <small className="form-text">Select your preferred belay device</small>
         </div>
 
         <div className="form-group">
@@ -220,7 +221,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
         
         <div className="form-group">
          <input type="text" placeholder="Best Availabilty to Climb" name="best_time" value={best_time} onChange={e => onChange(e)}/>
-         <small className="form-text">ie. (Weekends / Wednesdays after 5pm)</small>
+         <small className="form-text">Your best availabilty to climb ie. (Weekends / Wednesdays after 5pm)</small>
         </div>
         
         <div className="form-group">
@@ -229,6 +230,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
             <option value='male'>Male</option>
             <option value='female'>Female</option>
          </select>
+         <small className="form-text">* Helps for filtering potential climbing partners</small>
         </div>
         
         <div className="form-group">
