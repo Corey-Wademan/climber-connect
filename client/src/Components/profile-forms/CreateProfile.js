@@ -126,33 +126,53 @@ const CreateProfile = ({createProfile, history}) => {
             
          <div className="form-group">
             <h1>Leads</h1>
-            <select name={tradLead} value={tradLead} onChange={e => onChange(e)}>
-               <option value="" disabled selected>Trad Lead</option>
+               <select
+                  name="tradLead"
+                  value={tradLead}
+                  onChange={e => onChange(e)}>
+                  <option
+                     value=""
+                     disabled selected>Trad Lead</option>
                {grades.map(grade => (
                   <option key={grade} value={grade}>{grade}</option>
                ))}
-            </select>
-            <br></br>
-            <select name="sportLead" value={sportLead} onChange={e => onChange(e)}>
-               <option value="" disabled selected>Sport Lead</option>
+               </select>
+               <br></br>
+               <select
+                  name="sportLead"
+                  value={sportLead}
+                  onChange={e => onChange(e)}>
+                  <option
+                     value=""
+                     disabled selected>Sport Lead</option>
                {grades.map(grade => (
                   <option key={grade} value={grade}>{grade}</option>
                ))}
-            </select>
-            <small className="form-text">Select the grades you can currently lead</small>
+               </select>
+               <small className="form-text">Select the grades you can currently lead</small>
         </div>
         
         <div className="form-group">
             <h1>Follows</h1>
-            <select name="tradFollow" value={tradFollow} onChange={e => onChange(e)}>
-               <option value="" disabled selected>Trad Follow</option>
+               <select
+                  name="tradFollow"
+                  value={tradFollow}
+                  onChange={e => onChange(e)}>
+                  <option
+                     value=""
+                     disabled selected>Trad Follow</option>
                {grades.map(grade => (
                   <option key={grade} value={grade}>{grade}</option>
                ))}
-            </select>
-            <br></br>
-            <select name="sportFollow" value={sportFollow} onChange={e => onChange(e)}>
-               <option value="" disabled selected>Sport Follow</option>
+               </select>
+               <br></br>
+               <select
+                  name="sportFollow"
+                  value={sportFollow}
+                  onChange={e => onChange(e)}>
+                  <option
+                     value=""
+                     disabled selected>Sport Follow</option>
                {grades.map(grade => (
                   <option key={grade} value={grade}>{grade}</option>
                ))}
