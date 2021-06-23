@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { states, grades } from './ProfileSelectors';
+import { states, grades, climbingTypes } from './ProfileSelectors';
 import { createProfile } from '../../actions/profile';
 
 const CreateProfile = ({createProfile, history}) => {
@@ -14,14 +14,10 @@ const CreateProfile = ({createProfile, history}) => {
       best_time: '',
       climbing_since: '',
       climbing_type: [],
-      leads: [
-         {sportLead: ''},
-         {tradLead: ''},
-      ],
-      follows: [
-         { sportFollow: '' },
-         {tradFollow: ''},
-      ],
+      tradLead: '',
+      sportLead: '',
+      tradFollow: '',
+      sportFollow: '',
       additional_info: '',
       twitter: '',
       facebook: '',
@@ -50,10 +46,22 @@ const CreateProfile = ({createProfile, history}) => {
    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
    // Currently takes in the last of selected values
-   // Change to take in all values selected
-   const updateClimbTypes = (e) => {
-      setFormData({...formData, climbing_type: e.target.value})
+   // Change to take in all values
+   const updateClimbTypes = e => {
+      let selected = climbing_type
+      let find = selected.indexOf(e)
+
+      if (find > -1) {
+         selected.splice(find, 1)
+      } else {
+         selected.push(e)
+      }
+      setFormData({
+         ...formData,
+         climbing_type: selected
+      })
    };
+
 
    const onSubmit = e => {
       e.preventDefault();
@@ -72,10 +80,22 @@ const CreateProfile = ({createProfile, history}) => {
       <form className="form" onSubmit={e => onSubmit(e)}>
          
         <div className="form-group">
-         <select required name="location" value={location} onChange={e => onChange(e)}>
-            <option value="" disabled selected>*Location</option>
+               <select
+                  required
+                  name="location"
+                  value={location}
+                  onChange={e => onChange(e)}>
+                  <option
+                     value=""
+                     disabled>
+                     *Location
+                  </option>
             {states.map(state => (
-               <option value={state}>{state}</option>
+               <option
+                  key={state}
+                  value={state}>
+                  {state}
+               </option>
             ))}
          </select>
          <small className="form-text">Your location to find other climbers near you </small>
@@ -86,29 +106,37 @@ const CreateProfile = ({createProfile, history}) => {
          <small className="form-text">Helps for identifying & matching similarly aged users</small>
         </div>
             
-        <div className='form-group'>
+         <div className='form-group'>
            <h1> Climbing Types</h1>
-            <input type="checkbox" id="trad" name="trad" value='trad' onChange={e => updateClimbTypes(e)}/>
-            <label for="trad"> Trad</label><br></br>
-            <input type="checkbox" id="sport" name="sport" value='sport' onChange={e => updateClimbTypes(e)} />
-            <label for="sport"> Sport</label><br></br>
-               <input type="checkbox" id="boulder" name="boulder" value='boulder' onChange={e => updateClimbTypes(e)}/>
-            <label for="boulder"> Boulder</label>
-        </div>
-        
-        <div className="form-group">
+            {climbingTypes.map(climb => (
+               <label key={climb.id}>
+               <input
+                  type="checkbox"
+                  name={climb.name}
+                  value={climb.name}
+                  onChange={() => updateClimbTypes(climb.name)}
+                  selected={climbing_type.includes(climb.id)}
+                  /> {climb.name}
+                  <br></br>
+               </label>
+               
+            ))}
+            <small className="form-text">Select your types of climbing</small>
+         </div>
+            
+         <div className="form-group">
             <h1>Leads</h1>
-            <select name="tradLead" value={tradLead} onChange={e => onChange(e)}>
+            <select name={tradLead} value={tradLead} onChange={e => onChange(e)}>
                <option value="" disabled selected>Trad Lead</option>
                {grades.map(grade => (
-                  <option value={grade}>{grade}</option>
+                  <option key={grade} value={grade}>{grade}</option>
                ))}
             </select>
             <br></br>
             <select name="sportLead" value={sportLead} onChange={e => onChange(e)}>
                <option value="" disabled selected>Sport Lead</option>
                {grades.map(grade => (
-                  <option value={grade}>{grade}</option>
+                  <option key={grade} value={grade}>{grade}</option>
                ))}
             </select>
             <small className="form-text">Select the grades you can currently lead</small>
@@ -119,24 +147,25 @@ const CreateProfile = ({createProfile, history}) => {
             <select name="tradFollow" value={tradFollow} onChange={e => onChange(e)}>
                <option value="" disabled selected>Trad Follow</option>
                {grades.map(grade => (
-                  <option value={grade}>{grade}</option>
+                  <option key={grade} value={grade}>{grade}</option>
                ))}
             </select>
             <br></br>
             <select name="sportFollow" value={sportFollow} onChange={e => onChange(e)}>
                <option value="" disabled selected>Sport Follow</option>
                {grades.map(grade => (
-                  <option value={grade}>{grade}</option>
+                  <option key={grade} value={grade}>{grade}</option>
                ))}
             </select>
             <small className="form-text">Select the grades you currently follow / clean</small>
-        </div>
-         
+         </div>
+               
         <div className="form-group">
          <select type="text" name="preferred_belay_device" value={preferred_belay_device} onChange={e => onChange(e)}>
-            <option value="" disabled selected>Belay Device</option>
+            <option value="" disabled>Belay Device</option>
             <option value='atc'>ATC</option>
             <option value='assisted_braking'>Assisted Braking</option>
+            <option value='figure-eigh'>Figure Eight</option>
          </select>
         </div>
 
@@ -152,14 +181,14 @@ const CreateProfile = ({createProfile, history}) => {
         
         <div className="form-group">
          <select required type="text" placeholder="Gender" name="gender" value={gender} onChange={e => onChange(e)}>
-            <option value="" disabled selected>*Gender</option>
+            <option value="" disabled>*Gender</option>
             <option value='male'>Male</option>
             <option value='female'>Female</option>
          </select>
         </div>
         
         <div className="form-group">
-         <label for="climbing_since">Climbing Since:</label>
+         <label>Climbing Since:</label>
          <input type="date" id="climbing_since" name="climbing_since" max={today} value={climbing_since} onChange={e => onChange(e)}/>
         </div>
 

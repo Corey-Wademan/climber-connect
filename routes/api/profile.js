@@ -73,13 +73,12 @@ router.post('/', [auth, [
     if (age) profileFields.age = age;
     if (location) profileFields.location = location;
     if (gender) profileFields.gender = gender;
-    if (climbing_type) profileFields.climbingType = climbing_type;
     if (climbing_since) profileFields.climbing_since = climbing_since;
     if (preferred_belay_device) profileFields.preferred_belay_device = preferred_belay_device;
     if (best_time) profileFields.best_time = best_time;
     if (additional_info) profileFields.additionalInfo = additional_info;
     if (climbing_type) {
-        profileFields.climbing_type = climbing_type.split(', ');
+        profileFields.climbing_type = climbing_type;
     }
 
     // Build social object 
@@ -88,6 +87,19 @@ router.post('/', [auth, [
     if (twitter) profileFields.social.twitter = twitter;
     if (instagram) profileFields.social.instagram = instagram;
     if (facebook) profileFields.social.facebook = facebook;
+
+    // Build leads object
+    profileFields.leads = {}
+    const { sportLead, tradLead } = req.body;
+    if (sportLead) profileFields.leads.sportLead = sportLead;
+    if (tradLead) profileFields.leads.tradLead = tradLead;
+
+    // Build follows object
+    profileFields.follows = {}
+    const { sportFollow, tradFollow } = req.body;
+    if (sportFollow) profileFields.follows.sportFollow = sportFollow;
+    if (tradFollow) profileFields.follows.tradFollow = tradFollow;
+
 
         try {
             let profile = await Profile.findOne({ user: req.user.id });
@@ -107,45 +119,6 @@ router.post('/', [auth, [
             console.log(err.message)
             res.status(500).send('Server Error')
         }
-});
-
-// Update route for trad/sport leading 
-// api / profile / leads
-router.put('/leads', auth, async (req, res) => {
-
-    // Build leads object
-    const { sportLead, tradLead } = req.body;
-    const leadsObj = { sportLead, tradLead };
-
-    try {
-        const profile = await Profile.findOne({ user: req.user.id });
-        profile.leads.unshift(leadsObj);
-        await profile.save();
-        res.json(profile);
-    } catch (err) {
-        console.log(err.message)
-        res.status(500).send('Server Error');
-    }
-
-});
-
-// Update route for trad/sport follow 
-// api / profile / follows
-router.put('/follows', auth, async (req, res) => {
-
-    // Build follows object
-    const { sportFollow, tradFollow } = req.body;
-    const followsObj = { sportFollow, tradFollow };
-    
-    try {
-        const profile = await Profile.findOne({ user: req.user.id });
-        profile.follows.unshift(followsObj);
-        await profile.save();
-        res.json(profile);
-    } catch (err) {
-        console.log(err.message)
-        res.status(500).send('Server Error');
-    }
 });
 
 // Delete route for trad/sport lead 

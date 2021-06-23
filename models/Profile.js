@@ -29,26 +29,22 @@ const ProfileSchema = new mongoose.Schema({
     preferred_belay_device: {
         type: String
     },
-    leads: [
-        {
-            sportLead: {
-                type: String
-            },
-            tradLead: {
-                type: String
-            },
+    leads: {
+        sportLead: {
+            type: String
+        },
+        tradLead: {
+            type: String
+        },
+    },
+    follows: {
+        sportFollow: {
+            type: String,
+        },
+        tradFollow: {
+            type: String,
         }
-    ],
-    follows: [
-        {
-            sportFollow: {
-                type: String,
-            },
-            tradFollow: {
-                type: String,
-            }
-        }
-    ],
+    },
     best_time: {
         type: String
     },
