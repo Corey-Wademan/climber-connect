@@ -95,10 +95,10 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
    return (
       <Fragment>
          <h1 className="large text-primary">
-        Create Your Profile
+        Edit Profile
       </h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Let's add some info to your climbing profile
+        <i className="fas fa-user"></i> Been climbing harder? Update your profile
       </p>
       <small>* = required field</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
