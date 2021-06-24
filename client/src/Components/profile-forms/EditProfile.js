@@ -49,12 +49,14 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
 
       })
 
-   }, [loading]);
+   }, [loading, getCurrentProfile]);
 
    const { age, location, gender, preferred_belay_device, best_time, climbing_type, climbing_since, sportLead, tradLead, sportFollow, tradFollow, additional_info, twitter, facebook, instagram, youtube } = formData;
 
    // Max Date Logic For Calendar Input
    let today = new Date();
+   console.log(today)
+
    let dd = today.getDate();
    let mm = today.getMonth()+1; // January = 0
    let yyyy = today.getFullYear();
@@ -66,6 +68,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
       } 
 
    today = yyyy+'-'+mm+'-'+dd;
+   console.log(today)
 
    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
