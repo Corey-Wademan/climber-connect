@@ -216,6 +216,7 @@
   
   .round-img {
     border-radius: 50%;
+    height: 2rem;
   }
   
   .line {
@@ -355,13 +356,27 @@
   
   /* Profiles Page */
   .profile {
-    display: grid;
-    grid-template-columns: 2fr 4fr 2fr;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    grid-gap: 2rem;
+    justify-content: center;
+    width: 75vw;
     padding: 1rem;
     line-height: 1.8;
     margin-bottom: 1rem;
+  }
+  .profile-col {
+    display: flex;
+    flex-direction: column;
+    margin: 0 .5rem;
+    padding: 1rem;
+  }
+
+  .profiles-img {
+    border-radius: 50%;
+    height: 100px;
+    width: auto;
+    margin: 1rem 2rem;
   }
   
   /* Profile Page */
@@ -535,9 +550,10 @@
     }
   
     /* Profiles Page */
-    .profile {
-      grid-template-columns: 1fr;
+    .profiles {
+      flex-direction: column;      
       text-align: center;
+      width: 100vw;
     }
   
     .profile ul {

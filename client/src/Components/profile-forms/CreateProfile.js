@@ -184,9 +184,9 @@ const CreateProfile = ({createProfile, history}) => {
         <div className="form-group">
          <select type="text" name="preferred_belay_device" value={preferred_belay_device} onChange={e => onChange(e)}>
             <option value="" disabled>Belay Device</option>
-            <option value='atc'>ATC</option>
-            <option value='assisted_braking'>Assisted Braking</option>
-            <option value='figure-eight'>Figure Eight</option>
+            <option value='ATC'>ATC</option>
+            <option value='Assisted Braking'>Assisted Braking</option>
+            <option value='Figure Eight'>Figure Eight</option>
          </select>
          <small className="form-text">Select your preferred belay device</small>
         </div>
@@ -204,8 +204,8 @@ const CreateProfile = ({createProfile, history}) => {
         <div className="form-group">
          <select required type="text" placeholder="Gender" name="gender" value={gender} onChange={e => onChange(e)}>
             <option value="" disabled>*Gender</option>
-            <option value='male'>Male</option>
-            <option value='female'>Female</option>
+            <option value='Male'>Male</option>
+            <option value='Female'>Female</option>
          </select>
          <small className="form-text">* Helps for filtering potential climbing partners</small>
         </div>
