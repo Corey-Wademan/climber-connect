@@ -77,7 +77,7 @@ router.post('/', [auth, [
     if (climbing_since) profileFields.climbing_since = climbing_since;
     if (preferred_belay_device) profileFields.preferred_belay_device = preferred_belay_device;
     if (best_time) profileFields.best_time = best_time;
-    if (additional_info) profileFields.additionalInfo = additional_info;
+    if (additional_info) profileFields.additional_info = additional_info;
     if (climbing_type) {
         profileFields.climbing_type = climbing_type;
     }
@@ -156,7 +156,7 @@ router.delete('/follows/:follow_id', auth, async (req, res) => {
     }
 });
 
-// Delete route for trad/sport follow 
+// Delete Profile
 // api/profile/
 router.delete('/', auth, async (req, res) => {
     try {

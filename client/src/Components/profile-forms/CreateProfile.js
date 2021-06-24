@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types' 
 import { connect } from 'react-redux';
 import { states, grades, climbingTypes } from './ProfileSelectors';
 import { createProfile } from '../../actions/profile';
@@ -13,7 +13,7 @@ const CreateProfile = ({createProfile, history}) => {
       preferred_belay_device: '',
       best_time: '',
       climbing_since: '',
-      climbing_type: [],
+      climbing_type: [], 
       tradLead: '',
       sportLead: '',
       tradFollow: '',
@@ -29,6 +29,7 @@ const CreateProfile = ({createProfile, history}) => {
    const { age, location, gender, preferred_belay_device, best_time, climbing_type, climbing_since, sportLead, tradLead, sportFollow, tradFollow, additional_info, twitter, facebook, instagram, youtube } = formData;
 
    // Max Date Logic For Calendar Input
+   // Fix format
    let today = new Date();
    let dd = today.getDate();
    let mm = today.getMonth()+1; // January = 0
