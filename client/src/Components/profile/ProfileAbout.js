@@ -17,11 +17,31 @@ const ProfileAbout = ({ profile: {
          <h2 className="text-primary">Climbing Profile</h2>
          <div className='climbing-type'>
             <b>Climbs: </b>
-            {climbing_type.map((climb, index) => (
-               <div key={index} className='p-1'>
-                  <i className='fas fa-check' /> {climb}
+            <div className='col'>
+               {climbing_type.map((climb, index) => (
+                  <div key={index} className='p'>
+                     <i className='fas fa-check' /> {climb}
+                  </div>
+               ))}
+            </div>
+            {leads && (
+            <Fragment>
+               <div className='col m'>
+                  <b>Trad Lead:</b> {leads.tradLead}
+                  <b>Sport Lead:</b> {leads.sportLead}
                </div>
-            ))}
+            </Fragment>
+            )}
+
+            {follows && (
+            <Fragment>
+               <div className='col m'>
+                  <b>Trad Follow:</b> {follows.tradFollow}
+                  <b>Sport Follow:</b> {follows.sportFollow}
+               </div>
+            </Fragment>
+            )}
+            
          </div>
 
          <div className="line"></div>
