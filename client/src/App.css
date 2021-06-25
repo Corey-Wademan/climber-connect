@@ -355,12 +355,18 @@
   }
   
   /* Profiles Page */
+  .profiles {
+    display: flex;
+    flex-direction: column;      
+    text-align: center;
+    width: 70vw;
+  }
+
   .profile {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    width: 75vw;
+    justify-content: flex-start;
     padding: 1rem;
     line-height: 1.8;
     margin-bottom: 1rem;
@@ -369,7 +375,21 @@
     display: flex;
     flex-direction: column;
     margin: 0 .5rem;
+    width: 33%;
     padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .profiles-btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.2rem .7rem;
+    font-size: .6rem;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in;
+    outline: none;
   }
 
   .profiles-img {
@@ -417,7 +437,7 @@
     text-align: center;
   }
   
-  .profile-about .skills {
+  .profile-about .climbing-type {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -551,6 +571,7 @@
   
     /* Profiles Page */
     .profiles {
+      display: flex;
       flex-direction: column;      
       text-align: center;
       width: 100vw;
@@ -577,7 +598,7 @@
         'github';
     }
   
-    .profile-about .skills {
+    .profile-about .climbing-type {
       flex-direction: column;
     }
   

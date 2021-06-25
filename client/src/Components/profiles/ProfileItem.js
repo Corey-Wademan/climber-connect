@@ -14,7 +14,7 @@ const ProfileItem = ({
       preferred_belay_device,
       additional_info
 }}) => {
-   return (
+   return ( 
       <div className='profile bg-light'>
          <img src={avatar} alt="" className='profiles-img' />
             <div className='profile-col'>
@@ -22,7 +22,7 @@ const ProfileItem = ({
                <p>{location}</p>
                <p>{age}</p>
                <p>{gender}</p>
-               <Link to={`/profile/${_id}`} className='btn btn-primary'>View Profile</Link>
+               <Link to={`/profile/${_id}`} className='profiles-btn btn-primary'>View Profile</Link>
             </div>
             <div className='profile-col'>
                <p>{climbing_type && <><b>Climbs:</b> {climbing_type.toString().split()}</>}</p>

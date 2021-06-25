@@ -40,7 +40,7 @@ export const getProfiles = () => async dispatch => {
          }
       })
    }
-}
+} 
 
 // Get profile by ID
 export const getProfileById = userId => async dispatch => {

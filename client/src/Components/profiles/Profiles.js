@@ -16,7 +16,7 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
             <Fragment>
                <h1 className='large text-primary'>Climbers</h1>
                <p className='lead'>
-                  <i className='fab fa-connectdevelop'>Find and link up with other climbers in your area</i>
+                  <i className='fas fa-hiking'> Find and link up with other climbers in your area</i>
                </p>
                <div className='profiles'>
                   {profiles.length > 0 ? (

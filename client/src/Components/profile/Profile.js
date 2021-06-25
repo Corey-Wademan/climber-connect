@@ -3,9 +3,16 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { Spinner } from '../Layout/Spinner'
-import {getProfileById} from '../../actions/profile'
+import { getProfileById } from '../../actions/profile'
+import ProfileTop from './ProfileTop';
+import ProfileAbout from './ProfileAbout'
 
-const Profile = ({ getProfileById, profile: { profile, loading }, auth, match }) => {
+const Profile = ({
+   getProfileById,
+   profile: { profile, loading },
+   auth,
+   match
+}) => {
    useEffect(() => {
       getProfileById(match.params.id);
    }, [getProfileById, match.params.id]);
@@ -18,9 +25,11 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth, match })
                   Back To Profiles
                </Link>
                {auth.isAuth && auth.loading === false && auth.user._id === profile.user._id &&
-                  (<Link to='/edit-profile' className='btn btn-dark'>
-                     Edit Profile
-                  </Link>)}
+                  (<Link to='/edit-profile' className='btn btn-dark'>Edit Profile</Link>)}
+               <div class="profile-grid my-1">
+                  <ProfileTop profile={profile} />
+                  <ProfileAbout profile={profile} />
+               </div>
             </Fragment>)}
       </Fragment>
    );
