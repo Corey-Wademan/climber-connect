@@ -40,9 +40,15 @@ const ProfileAbout = ({ profile: {
                   <b>Sport Follow:</b> {follows.sportFollow}
                </div>
             </Fragment>
-            )}
-            
+            )}  
          </div>
+         {preferred_belay_device && (
+            <Fragment>
+               <div>
+                  <b>Preferred Belaying Device:</b> {preferred_belay_device}
+               </div>
+            </Fragment>
+            )}  
 
          <div className="line"></div>
          <div>
