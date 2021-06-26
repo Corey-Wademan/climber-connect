@@ -19,7 +19,7 @@ const ProfileAbout = ({ profile: {
          <h2 className="text-primary">Climbing Profile</h2>
          <p>{climbing_since && (<span>Climbing Since: {formatDate(climbing_since)}</span>)}</p>
          <div className='climbing-type'>
-            <b>Climbs: </b> 
+            <b>Climbs:</b> 
             <div className='col m-1'>
                {climbing_type.map((climb, index) => (
                   <div key={index} className='p'>
@@ -31,10 +31,10 @@ const ProfileAbout = ({ profile: {
             <Fragment>
                <div className='col m-1'>
                   <div className='row'>
-                     <b>Trad Lead: </b>{leads.tradLead}
+                     <b>Trad Lead: </b><span>{leads.tradLead}</span>
                   </div>
                   <div className='row'>
-                     <b>Sport Lead: </b>{leads.sportLead}
+                     <b>Sport Lead: </b><span>{leads.sportLead}</span>
                   </div>
                </div>
             </Fragment>
@@ -44,10 +44,10 @@ const ProfileAbout = ({ profile: {
             <Fragment>
                <div className='col m-1'>
                   <div className='row'>
-                     <b>Trad Follow:</b> {follows.tradFollow}
+                     <b>Trad Follow: </b><span>{follows.tradFollow}</span>
                   </div>
                   <div className='row'>
-                     <b>Sport Follow:</b> {follows.sportFollow}  
+                     <b>Sport Follow: </b><span> {follows.sportFollow}</span>
                   </div>
                </div>
             </Fragment>

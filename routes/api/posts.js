@@ -4,7 +4,6 @@ const {check, validationResult} = require('express-validator');
 const auth = require('../../middleware/auth');
 const Post = require('../../models/Post');
 const User = require('../../models/User');
-const Profile = require('../../models/Profile');
 
 // POST api/posts 
 //access Public 
@@ -33,8 +32,6 @@ router.post('/', [auth, [
         console.log(err.message)
         res.status(500).send('Server Error')
     }
-     
-    
 });
 
 // GET api/posts //access public (add auth if only posts can be viewed from account) 
