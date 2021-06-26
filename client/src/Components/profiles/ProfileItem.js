@@ -28,7 +28,7 @@ const ProfileItem = ({
                <p>{climbing_type && <><b>Climbs:</b> {climbing_type.toString().split()}</>}</p>
                <p>{leads && leads.tradLead ? <> <b>Trad Leads:</b> {leads.tradLead} </>: <> </>}</p>
                <p>{leads && leads.sportLead ? <> <b>Sport Leads:</b> {leads.sportLead} </> : <> </>}</p>
-               <p>{preferred_belay_device && <> <b>Preferred Belay Device:</b> {preferred_belay_device} </>}</p>
+               <p>{preferred_belay_device && <> <b>Belay Device:</b> {preferred_belay_device} </>}</p>
                <p>{best_time && <> <b>Best Time To Climb:</b> {best_time} </>}</p>
                <p>{additional_info && <> <b>About Me:</b> {additional_info} </>}</p>
             </div>

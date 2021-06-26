@@ -17,7 +17,7 @@ const ProfileAbout = ({ profile: {
          <h2 className="text-primary">Climbing Profile</h2>
          <div className='climbing-type'>
             <b>Climbs: </b>
-            <div className='col'>
+            <div className='col m-1'>
                {climbing_type.map((climb, index) => (
                   <div key={index} className='p'>
                      <i className='fas fa-check' /> {climb}
@@ -26,7 +26,7 @@ const ProfileAbout = ({ profile: {
             </div>
             {leads && (
             <Fragment>
-               <div className='col m'>
+               <div className='col m-1'>
                   <b>Trad Lead:</b> {leads.tradLead}
                   <b>Sport Lead:</b> {leads.sportLead}
                </div>
@@ -35,19 +35,20 @@ const ProfileAbout = ({ profile: {
 
             {follows && (
             <Fragment>
-               <div className='col m'>
+               <div className='col m-1'>
                   <b>Trad Follow:</b> {follows.tradFollow}
                   <b>Sport Follow:</b> {follows.sportFollow}
                </div>
             </Fragment>
             )}  
          </div>
-         {preferred_belay_device && (
-            <Fragment>
-               <div>
-                  <b>Preferred Belaying Device:</b> {preferred_belay_device}
-               </div>
-            </Fragment>
+
+            {preferred_belay_device && (
+               <Fragment>
+                  <div>
+                     <b>Belaying Device:</b> {preferred_belay_device}
+                  </div>
+               </Fragment>
             )}  
 
          <div className="line"></div>

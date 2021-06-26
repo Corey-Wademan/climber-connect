@@ -30,7 +30,7 @@ const CreateProfile = ({createProfile, history}) => {
 
    // Max Date Logic For Calendar Input
    // Fix format
-   let today = new Date();
+   let today = new Date(); 
    let dd = today.getDate();
    let MM = today.getMonth()+1; // January = 0
    let yyyy = today.getFullYear();

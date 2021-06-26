@@ -26,7 +26,7 @@ const Profile = ({
                </Link>
                {auth.isAuth && auth.loading === false && auth.user._id === profile.user._id &&
                   (<Link to='/edit-profile' className='btn btn-dark'>Edit Profile</Link>)}
-               <div class="profile-grid my-1">
+               <div className="profile-grid my-1">
                   <ProfileTop profile={profile} />
                   <ProfileAbout profile={profile} />
                </div>

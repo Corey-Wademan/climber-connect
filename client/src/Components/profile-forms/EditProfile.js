@@ -37,15 +37,15 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
          best_time: loading || !profile.best_time ? '' : profile.best_time,
          climbing_since: loading || !profile.climbing_since ? '' : profile.climbing_since,
          climbing_type: loading || !profile.climbing_type ? '' : profile.climbing_type,
-         tradLead: loading || !profile.tradLead ? '' : profile.tradLead,
-         sportLead: loading || !profile.sportLead ? '' : profile.sportLead,
-         tradFollow: loading || !profile.tradFollow ? '' : profile.tradFollow,
-         sportFollow: loading || !profile.sportFollow ? '' : profile.sportFollow,
+         tradLead: loading || !profile.leads.tradLead ? '' : profile.leads.tradLead,
+         sportLead: loading || !profile.leads.sportLead ? '' : profile.leads.sportLead,
+         tradFollow: loading || !profile.follows.tradFollow ? '' : profile.follows.tradFollow,
+         sportFollow: loading || !profile.follows.sportFollow ? '' : profile.follows.sportFollow,
          additional_info: loading || !profile.additional_info ? '' : profile.additional_info,
-         twitter: loading || !profile.twitter ? '' : profile.twitter,
-         facebook: loading || !profile.facebook ? '' : profile.facebook,
-         instagram: loading || !profile.instagram ? '' : profile.instagram,
-         youtube: loading || !profile.youtube ? '' : profile.youtube,
+         twitter: loading || !profile.social ? '' : profile.social.twitter,
+         facebook: loading || !profile.social ? '' : profile.social.facebook,
+         instagram: loading || !profile.social ? '' : profile.social.instagram,
+         youtube: loading || !profile.social ? '' : profile.social.youtube,
 
       })
 
@@ -62,7 +62,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
    let yyyy = today.getFullYear();
    if(dd<10){
          dd='0'+dd
-      } 
+      }  
       if(mm<10){
          mm='0'+mm
       } 
@@ -129,7 +129,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
         </div>
         
         <div className="form-group">
-         <input type="text" placeholder="*Age" name="age" value={age} onChange={e => onChange(e)}/>
+         <input type="text" placeholder="*Age" name='age' value={age} onChange={e => onChange(e)}/>
          <small className="form-text">* Helps for identifying & matching similarly aged users</small>
         </div>
             
@@ -153,25 +153,21 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
             
          <div className="form-group">
             <h1>Leads</h1>
+               <small className="form-text">Trad Lead</small>
                <select
                   name="tradLead"
                   value={tradLead}
                   onChange={e => onChange(e)}>
-                  <option
-                     value=""
-                     disabled selected>Trad Lead</option>
                {grades.map(grade => (
                   <option key={grade} value={grade}>{grade}</option>
                ))}
                </select>
                <br></br>
+               <small className="form-text">Sport Lead</small>
                <select
                   name="sportLead"
                   value={sportLead}
                   onChange={e => onChange(e)}>
-                  <option
-                     value=""
-                     disabled selected>Sport Lead</option>
                {grades.map(grade => (
                   <option key={grade} value={grade}>{grade}</option>
                ))}
@@ -181,25 +177,21 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
         
         <div className="form-group">
             <h1>Follows</h1>
+               <small className="form-text">Trad Follow</small>
                <select
                   name="tradFollow"
                   value={tradFollow}
                   onChange={e => onChange(e)}>
-                  <option
-                     value=""
-                     disabled selected>Trad Follow</option>
                {grades.map(grade => (
                   <option key={grade} value={grade}>{grade}</option>
                ))}
                </select>
                <br></br>
+               <small className="form-text">Sport Follow</small>
                <select
                   name="sportFollow"
                   value={sportFollow}
                   onChange={e => onChange(e)}>
-                  <option
-                     value=""
-                     disabled selected>Sport Follow</option>
                {grades.map(grade => (
                   <option key={grade} value={grade}>{grade}</option>
                ))}
@@ -230,8 +222,8 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
         <div className="form-group">
          <select required type="text" placeholder="Gender" name="gender" value={gender} onChange={e => onChange(e)}>
             <option value="" disabled>*Gender</option>
-            <option value='male'>Male</option>
-            <option value='female'>Female</option>
+            <option value='Male'>Male</option>
+            <option value='Female'>Female</option>
          </select>
          <small className="form-text">* Helps for filtering potential climbing partners</small>
         </div>
