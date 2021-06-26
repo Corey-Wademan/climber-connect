@@ -55,8 +55,6 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
 
    // Max Date Logic For Calendar Input
    let today = new Date();
-   console.log(today)
-
    let dd = today.getDate();
    let mm = today.getMonth()+1; // January = 0
    let yyyy = today.getFullYear();
@@ -66,18 +64,12 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
       if(mm<10){
          mm='0'+mm
       } 
+   today = yyyy + '-' + mm + '-' + dd;
 
-   today = yyyy+'-'+mm+'-'+dd;
-   console.log(today)
-
-   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-   // Currently takes in the last of selected values
-   // Change to take in all values
+   
    const updateClimbTypes = e => {
       let selected = climbing_type
       let find = selected.indexOf(e)
-
       if (find > -1) {
          selected.splice(find, 1)
       } else {
@@ -89,6 +81,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
       })
    };
 
+   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
    const onSubmit = e => {
       e.preventDefault();
@@ -101,7 +94,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
         Edit Profile
       </h1>
       <p className="lead">
-        <i className="fas fa-user"></i> Been climbing harder? Update your profile
+        <i className="fas fa-user"></i> Climbing harder? Update your profile
       </p>
       <small>* = required field</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
@@ -140,10 +133,11 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
                <input
                   type="checkbox"
                   name={climb.name}
+                  checked={climbing_type.includes(climb.name)}
                   value={climb.name}
                   onChange={() => updateClimbTypes(climb.name)}
-                  selected={climbing_type.includes(climb.id)}
-                  /> {climb.name}
+                  />
+                  {climb.name}
                   <br></br>
                </label>
                

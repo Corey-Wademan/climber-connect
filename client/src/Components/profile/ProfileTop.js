@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import formatDate from '../../utils/formatDate'
 
 const ProfileTop = ({ profile: {
    age,
    location,
    gender,
    social,
-   climbing_since,
+   member_since,
    user: {name, avatar}
 }}) => {
    return (
@@ -20,7 +21,7 @@ const ProfileTop = ({ profile: {
          <p>{age}</p>
          <p>{gender}</p>
          <p>{location}</p>
-         {/* <p>{climbing_since && (<span>Climbing Since: {climbing_since}</span>)}</p> */}
+         <p>Member Since: {formatDate(member_since)}</p>
          <div className="icons my-1">
             {social && social.twitter && (
                <a href={social.twitter} target="_blank" rel="noopener noreferrer">

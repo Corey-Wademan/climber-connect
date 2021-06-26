@@ -19,7 +19,7 @@ export const loadUser = () => async dispatch => {
     } catch (error) {
         dispatch({
             type: AUTH_ERROR
-        })
+        }) 
     }
 }
 

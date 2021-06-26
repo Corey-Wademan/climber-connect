@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Fragment } from 'react'
+import formatDate from '../../utils/formatDate'
 
 const ProfileAbout = ({ profile: {
    climbing_type,
@@ -9,14 +10,16 @@ const ProfileAbout = ({ profile: {
    follows,
    additional_info,
    best_time,
+   climbing_since,
    user: {name}
 } }) => {
    
    return (
       <div className="profile-about bg-light p-2">
          <h2 className="text-primary">Climbing Profile</h2>
+         <p>{climbing_since && (<span>Climbing Since: {formatDate(climbing_since)}</span>)}</p>
          <div className='climbing-type'>
-            <b>Climbs: </b>
+            <b>Climbs: </b> 
             <div className='col m-1'>
                {climbing_type.map((climb, index) => (
                   <div key={index} className='p'>
@@ -27,8 +30,12 @@ const ProfileAbout = ({ profile: {
             {leads && (
             <Fragment>
                <div className='col m-1'>
-                  <b>Trad Lead:</b> {leads.tradLead}
-                  <b>Sport Lead:</b> {leads.sportLead}
+                  <div className='row'>
+                     <b>Trad Lead: </b>{leads.tradLead}
+                  </div>
+                  <div className='row'>
+                     <b>Sport Lead: </b>{leads.sportLead}
+                  </div>
                </div>
             </Fragment>
             )}
@@ -36,8 +43,12 @@ const ProfileAbout = ({ profile: {
             {follows && (
             <Fragment>
                <div className='col m-1'>
-                  <b>Trad Follow:</b> {follows.tradFollow}
-                  <b>Sport Follow:</b> {follows.sportFollow}
+                  <div className='row'>
+                     <b>Trad Follow:</b> {follows.tradFollow}
+                  </div>
+                  <div className='row'>
+                     <b>Sport Follow:</b> {follows.sportFollow}  
+                  </div>
                </div>
             </Fragment>
             )}  

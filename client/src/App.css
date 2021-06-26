@@ -49,6 +49,12 @@
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    
+  }
   
   /* Text Styles*/
   .x-large {

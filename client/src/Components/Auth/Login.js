@@ -20,7 +20,7 @@ const Login = ({login, isAuth}) => {
         login(email, password);
     }
 
-    // Redirect if loggin in
+    // Redirect if loggin in 
     if (isAuth) {
         return <Redirect to="/dashboard" />
     }

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import logo from '../../img/climb-logo.png'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {logout} from '../../actions/auth'
+import { logout } from '../../actions/auth'
  
 const Navbar = ({ auth: { isAuth, loading }, logout }) => {
   

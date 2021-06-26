@@ -43,7 +43,6 @@ const CreateProfile = ({createProfile, history}) => {
 
    today = yyyy+'-'+MM+'-'+dd;
 
-   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
    // Currently takes in the last of selected values
    // Change to take in all values
@@ -62,6 +61,7 @@ const CreateProfile = ({createProfile, history}) => {
       })
    };
 
+   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
    const onSubmit = e => {
       e.preventDefault();
@@ -116,7 +116,8 @@ const CreateProfile = ({createProfile, history}) => {
                   value={climb.name}
                   onChange={() => updateClimbTypes(climb.name)}
                   selected={climbing_type.includes(climb.id)}
-                  /> {climb.name}
+                  />
+                  {climb.name}
                   <br></br>
                </label>
                
