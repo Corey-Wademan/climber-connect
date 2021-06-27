@@ -37,7 +37,7 @@ function authReducer ( state = initialState, action ) {
                 ...state,
                 token: null,
                 isAuth: false,
-                loading: false
+                loading: false        
             }
         default:
             return state

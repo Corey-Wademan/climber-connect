@@ -116,8 +116,7 @@ const CreateProfile = ({createProfile, history}) => {
                   value={climb.name}
                   onChange={() => updateClimbTypes(climb.name)}
                   selected={climbing_type.includes(climb.id)}
-                  />
-                  {climb.name}
+                  /> {climb.name}
                   <br></br>
                </label>
                
@@ -127,25 +126,21 @@ const CreateProfile = ({createProfile, history}) => {
             
          <div className="form-group">
             <h1>Leads</h1>
+               <small className="form-text">Trad Lead</small>
                <select
                   name="tradLead"
                   value={tradLead}
                   onChange={e => onChange(e)}>
-                  <option
-                     value=""
-                     disabled selected>Trad Lead</option>
                {grades.map(grade => (
                   <option key={grade} value={grade}>{grade}</option>
                ))}
                </select>
                <br></br>
+               <small className="form-text">Sport Lead</small>
                <select
                   name="sportLead"
                   value={sportLead}
                   onChange={e => onChange(e)}>
-                  <option
-                     value=""
-                     disabled selected>Sport Lead</option>
                {grades.map(grade => (
                   <option key={grade} value={grade}>{grade}</option>
                ))}
@@ -155,25 +150,21 @@ const CreateProfile = ({createProfile, history}) => {
         
         <div className="form-group">
             <h1>Follows</h1>
+               <small className="form-text">Trad Follow</small>
                <select
                   name="tradFollow"
                   value={tradFollow}
                   onChange={e => onChange(e)}>
-                  <option
-                     value=""
-                     disabled selected>Trad Follow</option>
                {grades.map(grade => (
                   <option key={grade} value={grade}>{grade}</option>
                ))}
                </select>
                <br></br>
+               <small className="form-text">Sport Follow</small>
                <select
                   name="sportFollow"
                   value={sportFollow}
                   onChange={e => onChange(e)}>
-                  <option
-                     value=""
-                     disabled selected>Sport Follow</option>
                {grades.map(grade => (
                   <option key={grade} value={grade}>{grade}</option>
                ))}

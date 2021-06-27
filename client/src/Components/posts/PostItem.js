@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Moment from 'react-moment'
@@ -60,13 +60,13 @@ const PostItem = ({
 PostItem.propTypes = {
 	post: PropTypes.object.isRequired,
 	auth: PropTypes.object.isRequired,
-}
-
-const mapStateToProps = state => ({
-	auth: state.auth,
 	addLike: PropTypes.func.isRequired,
 	removeLike: PropTypes.func.isRequired,
 	deletePost: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => ({
+	auth: state.auth
 })
 
 export default connect(mapStateToProps, {addLike, removeLike, deletePost})(PostItem)

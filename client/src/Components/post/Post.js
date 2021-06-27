@@ -8,7 +8,7 @@ const Post = ({getPost, post:{post, loading}, match}) => {
 
 	useEffect(() => {
 		getPost(match.params.id)
-	}, [getPost])
+	}, [getPost, match.params.id])
 
 	return (
 		<div>

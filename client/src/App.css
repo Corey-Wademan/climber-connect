@@ -328,6 +328,10 @@
   .navbar ul {
     display: flex;
   }
+
+  .navbar li {
+    align-self: flex-end;
+  }
   
   .navbar a {
     color: #fff;

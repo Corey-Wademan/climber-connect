@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { set } from 'mongoose';
-import { setAlert, SET_ALERT } from './alert'
+import { setAlert } from './alert'
 import { ADD_POST, DELETE_POST, GET_POSTS, GET_POST, POST_ERROR, UPDATE_LIKES } from './types'
 
 // Get posts
@@ -65,7 +64,7 @@ export const addPost = formData => async dispatch => {
 // Delete Posts
 export const deletePost = id => async dispatch => {
 	try {
-		const res = await axios.delete(`/api/posts/${id}`)
+		await axios.delete(`/api/posts/${id}`)
 
 		dispatch({
 			type: DELETE_POST,
