@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { set } from 'mongoose';
 import { setAlert, SET_ALERT } from './alert'
-import { ADD_POST, DELETE_POST, GET_POSTS, POST_ERROR, UPDATE_LIKES } from './types'
+import { ADD_POST, DELETE_POST, GET_POSTS, GET_POST, POST_ERROR, UPDATE_LIKES } from './types'
 
 // Get posts
 export const getPosts = () => async dispatch => {
@@ -10,6 +10,23 @@ export const getPosts = () => async dispatch => {
 
 		dispatch({
 			type: GET_POSTS,
+			payload: res.data
+		});
+	} catch (error) {
+		dispatch({
+			type: POST_ERROR,
+			payload: {msg: error.response.statusText, status: error.response.status}
+		})
+	}
+}
+
+// Get single post
+export const getPost = id => async dispatch => {
+	try {
+		const res = await axios.get(`/api/posts${id}`)
+
+		dispatch({
+			type: GET_POST,
 			payload: res.data
 		});
 	} catch (error) {
