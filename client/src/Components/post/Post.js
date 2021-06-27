@@ -1,8 +1,10 @@
 import React, {Fragment, useEffect} from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getPost } from '../../actions/post'
 import { Spinner } from '../Layout/Spinner'
+import PostItem from '../posts/PostItem'
 
 const Post = ({getPost, post:{post, loading}, match}) => {
 
@@ -10,11 +12,16 @@ const Post = ({getPost, post:{post, loading}, match}) => {
 		getPost(match.params.id)
 	}, [getPost, match.params.id])
 
-	return (
-		<div>
-			post
-		</div>
-	)
+	return loading || post === null ? <Spinner /> :
+		<Fragment>
+			<Link to='/posts' className='btn'>
+				Back To Posts
+			</Link>
+			<PostItem 
+				post={post}
+				showActions={false}
+			/>
+		</Fragment>
 }
 
 Post.propTypes = {

@@ -36,7 +36,7 @@ router.post('/', [auth, [
 
 // GET api/posts //access public (add auth if only posts can be viewed from account) 
 //Get all posts 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res) => { 
 
     try {
         const posts = await Post.find().sort({date: -1});

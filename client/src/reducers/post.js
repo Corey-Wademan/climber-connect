@@ -18,7 +18,7 @@ function postReducer(state = initialState, action) {
 				loading: false
 			}
 		case GET_POST:
-			return {
+			return { 
 				...state,
 				post: payload,
 				loading: false

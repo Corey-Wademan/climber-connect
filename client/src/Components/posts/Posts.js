@@ -19,6 +19,7 @@ const Posts = ({getPosts, getCurrentProfile, profile: {profile}, auth: {isAuth},
 			<Fragment>
 				<h3>
 					Only users can view posts, please 
+					<Link to='/login'> login </Link> or
 					<Link to='/register'> create an account </Link>
 					to create & view posts
 				</h3>
