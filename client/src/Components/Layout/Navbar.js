@@ -3,10 +3,10 @@ import {Link} from 'react-router-dom';
 import logo from '../../img/climb-logo.png'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { logout } from '../../actions/auth'
+import { logout } from '../../actions/auth' 
  
 const Navbar = ({ auth: { isAuth, loading }, logout }) => {
-  
+
   const authLinks = (
     <ul>
       <li>
@@ -26,10 +26,10 @@ const Navbar = ({ auth: { isAuth, loading }, logout }) => {
         </Link>
       </li>
       <li>
-        <a onClick={logout} href="#!">
+        <Link to='/' onClick={logout} href="#!">
           <i className='fas fa-sign-out-alt' />{' '}
           <span className='hide-sm'>Logout</span>
-        </a>
+        </Link>
       </li>
     </ul>
   )
