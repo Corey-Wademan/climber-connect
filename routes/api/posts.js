@@ -167,7 +167,7 @@ router.post('/comment/:id', [auth, [
             avatar: user.avatar,
             user: req.user.id
         };
-
+        
         post.comments.unshift(newComment);
         await post.save();
         res.json(post.comments);
