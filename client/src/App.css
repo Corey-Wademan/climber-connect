@@ -1,4 +1,4 @@
-/* Global Styles */
+          /* Global Styles */
 :root {
     --primary-color: #587983;
     --dark-color: #344b52;
@@ -36,13 +36,11 @@
     width: 100%;
   }
   
-  /* Utilities */
+               /* Utilities */
   .container {
     margin: auto;
-    overflow: hidden;
     padding: 0 2rem;
     margin-top: 6rem;
-    margin-bottom: 3rem;
   }
 
   .col {
@@ -74,7 +72,7 @@
     transition: .2s;
   }
   
-  /* Text Styles*/
+            /* Text Styles*/
   .x-large {
     font-size: 4rem;
     line-height: 1.2;
@@ -104,7 +102,7 @@
     color: var(--dark-color);
   }
   
-  /* Padding */
+              /* Padding */
   .p {
     padding: 0.5rem;
   }
@@ -130,7 +128,7 @@
     padding: 3rem 0;
   }
   
-  /* Margin */
+                /* Margin */
   .m {
     margin: 0.5rem;
   }
@@ -259,7 +257,7 @@
     margin: 1.5rem 0;
   }
   
-  /* Overlay */
+                /* Overlay */
   .dark-overlay {
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
@@ -269,7 +267,7 @@
     height: 100%;
   }
   
-  /* Forms */
+                  /* Forms */
   .form .form-group {
     margin: 1.2rem 0;
   }
@@ -333,7 +331,7 @@
     background: var(--light-color);
   }
   
-  /* Navbar */
+              /* Navbar */
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -373,11 +371,12 @@
     width: 10%;
     vertical-align: bottom;
   }
-  /* Landing Page */
+            /* Landing Page */
   .landing {
     position: relative;
     background: url('./img/landing-photo.jpeg')no-repeat center center/cover;
     height: 100vh;
+    margin-bottom: -6rem;
   }
   
   .landing-inner {
@@ -392,7 +391,7 @@
     text-align: center;
   }
   
-  /* Profiles Page */
+            /* Profiles Page */
   .profiles {
     display: flex;
     flex-direction: column;
@@ -443,7 +442,7 @@
     margin: 1rem 2rem;
   }
   
-  /* Profile Page */
+                  /* Profile Page */
   .profile-header {
     display: flex;
     flex-direction: row;
@@ -461,6 +460,12 @@
     border-radius: 15px;
     background-color: var(--vlight-color);
     margin-bottom: 2rem;
+    width: 30%;
+  }
+
+  .profile-about {
+    flex-direction: column;
+    width: 70%;
   }
   
   .profile-main img {
@@ -481,18 +486,58 @@
     text-align: center;
     border-radius: 15px;
     background-color: var(--vlight-color);
-    width: auto;
     margin: 1rem
   }
   
   .profile-about .climbing-type {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     text-align: center;
   }
+
+  /* Profile Page */ @media (max-width: 800px) {  
+    .profile-main img,
+    .profile img {
+      border-radius: 50%;
+      height: 150px;
+      width: auto;
+      margin: 1rem 2rem;
+    }
   
-  /* Posts Page */
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-main, .profile-about {
+      width: 100%;
+    }
+  
+    .climbing-type {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  
+    .dash-buttons a {
+      display: block;
+      width: 100%;
+      margin-bottom: 0.2rem;
+    }
+  
+    .post {
+      grid-template-columns: 1fr;
+    }
+    .post a,
+    .post button {
+      padding: 0.3rem 0.4rem;
+    }
+  }
+  
+                       /* Posts Page */
   .post-form .post-form-header {
     background: var(--primary-color);
     padding: 0.5rem;
@@ -527,7 +572,7 @@
     margin-bottom: 0.5rem;
   }
   
-  /* Mobile Styles */
+                  /* Mobile Styles */
   @media (max-width: 700px) {
     .container {
       margin-top: 8rem;
@@ -550,7 +595,7 @@
       font-size: 1rem;
     }
   
-    /* Navbar */
+             /* Navbar */
     .navbar {
       display: block;
       text-align: center;
@@ -569,7 +614,7 @@
       display: none;
     }
   
-    /* Profiles Page */
+               /* Profiles Page */
     .profiles {
       display: flex;
       flex-direction: column;      
@@ -579,41 +624,5 @@
   
     .profile ul {
       display: none;
-    }
-  
-    /* Profile Page */
-  
-    .profile-main img,
-    .profile img {
-      border-radius: 50%;
-      height: 150px;
-      width: auto;
-      margin: 1rem 2rem;
-    }
-  
-    .profile-header {
-      display: flex;
-      flex-direction: column;
-      align-content: center;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .profile-about .climbing-type {
-      flex-direction: column;
-    }
-  
-    .dash-buttons a {
-      display: block;
-      width: 100%;
-      margin-bottom: 0.2rem;
-    }
-  
-    .post {
-      grid-template-columns: 1fr;
-    }
-    .post a,
-    .post button {
-      padding: 0.3rem 0.4rem;
     }
   }

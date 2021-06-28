@@ -16,11 +16,11 @@ const ProfileAbout = ({ profile: {
    
    return (
       <div className="profile-about bg-light p-2"> 
-         <h2 className="text-primary">Climbing Profile</h2>
+         <h2 className="text-primary text-center">Climbing Profile</h2>
          <p>{climbing_since && (<span>Climbing Since: {formatDate(climbing_since)}</span>)}</p>
          <div className='climbing-type'>
             <b>Climbs:</b> 
-            <div className='col m-1'>
+            <div className='col'>
                {climbing_type.map((climb, index) => (
                   <div key={index} className='p'>
                      <i className='fas fa-check' /> {climb}
@@ -29,7 +29,7 @@ const ProfileAbout = ({ profile: {
             </div>
             {leads && (
             <Fragment>
-               <div className='col m-1'>
+               <div className='col'>
                   <div className='row'>
                      <b>Trad Lead: </b><span>{leads.tradLead}</span>
                   </div>
@@ -42,7 +42,7 @@ const ProfileAbout = ({ profile: {
 
             {follows && (
             <Fragment>
-               <div className='col m-1'>
+               <div className='col'>
                   <div className='row'>
                      <b>Trad Follow: </b><span>{follows.tradFollow}</span>
                   </div>
