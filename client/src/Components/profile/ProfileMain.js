@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import formatDate from '../../utils/formatDate'
 
-const ProfileTop = ({ profile: {
+const ProfileMain = ({ profile: {
    age,
    location,
    gender,
@@ -11,7 +11,7 @@ const ProfileTop = ({ profile: {
    user: {name, avatar}
 }}) => {
    return (
-      <div className="profile-top bg-primary p-2">
+      <div className="profile-main bg-light p-2">
           <img
             className="round-img my-1"
             src={avatar}
@@ -25,22 +25,22 @@ const ProfileTop = ({ profile: {
          <div className="icons my-1">
             {social && social.twitter && (
                <a href={social.twitter} target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-twitter fa-2x"></i>
+                  <i className="fab tran fa-twitter fa-2x"></i>
                </a>
             )}
             {social && social.facebook && (
                <a href={social.facebook} target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-facebook fa-2x"></i>
+                  <i className="fab tran fa-facebook fa-2x"></i>
                </a>
             )}
             {social && social.youtube && (
                <a href={social.youtube} target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-youtube fa-2x"></i>
+                  <i className="fab tran fa-youtube fa-2x"></i>
                </a>
             )}
             {social && social.instagram && (
                <a href={social.instagram} target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-instagram fa-2x"></i>
+                  <i className="fab tran fa-instagram fa-2x"></i>
                </a>
             )}
          </div>
@@ -48,8 +48,8 @@ const ProfileTop = ({ profile: {
    )
 }
 
-ProfileTop.propTypes = {
+ProfileMain.propTypes = {
    profile: PropTypes.object.isRequired,
 }
 
-export default ProfileTop
+export default ProfileMain

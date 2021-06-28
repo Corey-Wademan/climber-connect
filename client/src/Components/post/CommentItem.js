@@ -12,9 +12,8 @@ const CommentItem = ({
 	removeComment
 }) => {
 
-	console.log()
 	return (
-		<div className="post bg-white p-1 my-1">
+		<div className="post list-item p-1 my-1">
 			<div>
 				<Link to={`/profile/${user}`}>
 					<img

@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { Spinner } from '../Layout/Spinner'
 import { getProfileById } from '../../actions/profile'
-import ProfileTop from './ProfileTop';
-import ProfileAbout from './ProfileAbout'
+import ProfileTop from './ProfileMain';
+import ProfileMain from './ProfileAbout'
 
 const Profile = ({
    getProfileById,
@@ -21,14 +21,14 @@ const Profile = ({
       <Fragment>
          {profile === null || loading ? (<Spinner />) :
             (<Fragment>
-               <Link to='/profiles' className='btn btn-light'>
+               <Link to='/profiles' className='btn btn-dark'>
                   Back To Profiles
                </Link>
                {auth.isAuth && auth.loading === false && auth.user._id === profile.user._id &&
                   (<Link to='/edit-profile' className='btn btn-dark'>Edit Profile</Link>)}
-               <div className="profile-grid my-1">
+               <div className="profile-header my-1">
                   <ProfileTop profile={profile} />
-                  <ProfileAbout profile={profile} />
+                  <ProfileMain profile={profile} />
                </div>
             </Fragment>)}
       </Fragment>

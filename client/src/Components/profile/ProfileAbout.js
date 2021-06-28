@@ -15,7 +15,7 @@ const ProfileAbout = ({ profile: {
 } }) => {
    
    return (
-      <div className="profile-about bg-light p-2">
+      <div className="profile-about bg-light p-2"> 
          <h2 className="text-primary">Climbing Profile</h2>
          <p>{climbing_since && (<span>Climbing Since: {formatDate(climbing_since)}</span>)}</p>
          <div className='climbing-type'>
