@@ -23,12 +23,12 @@ const CommentItem = ({
 				</Link>
 				<h4>{name}</h4>
 			</div>
-			<div className='col'>
+			<div className='comment-text'>
 				<p className="my-1">
 					{text}
 				</p>
 			</div>
-			<div className='col'>
+			<div className='comment-details'>
 				{!auth.loading && user === auth.user._id && (
 					<button
 						onClick={e => removeComment(postId, _id)} 

@@ -27,7 +27,7 @@ const Post = ({getPost, post:{post, loading}, match}) => {
 			<div className='comments'>
 				{post.comments.map(comment => (
 				<div className='comment-container'>
-					<i class="fas fa-flip-horizontal fa-comment" style={{fontSize: '3rem'}}></i>
+					<i className="fas fa-flip-horizontal fa-comment" style={{fontSize: '5vw'}}></i>
 					<CommentItem key={comment._id} comment={comment} postId={post._id} />
 				</div>
 				))}
