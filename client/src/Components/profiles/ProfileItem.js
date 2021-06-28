@@ -15,7 +15,7 @@ const ProfileItem = ({
       additional_info
 }}) => {
    return ( 
-      <div className='profile list-item bg-light'>
+      <div className='profile list-item'>
          <img src={avatar} alt="" className='profiles-img' />
             <div className='profile-col'>
                <h2>{name}</h2>

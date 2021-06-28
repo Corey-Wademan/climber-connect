@@ -3,6 +3,7 @@
     --teal: #587983;
     --ocean: #6f91b4;
     --mint: #508a8b;
+    --stone: #58798345;
     --dark-color: #344b52;
     --light-color: #9db3b4;
     --peach: #fae8da;
@@ -60,7 +61,7 @@
   .list-item {
     border-radius: 10px;
     transition: .25s;
-    background-color: var(--teal);
+    background-color: var(--stone);
   }
 
   /*.list-item:hover {
@@ -601,7 +602,7 @@
     flex-direction: row;
     align-items: flex-end;
     padding: .5rem 1rem;
-    background-color: #58798345;
+    background-color: var(--stone);
   }
   
   .post > div:first-child {
