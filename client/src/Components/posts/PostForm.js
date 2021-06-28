@@ -8,24 +8,28 @@ const PostForm = ({addPost}) => {
 
 	return (
 		<div className="post-form">
-        <div className="bg-primary p">
-          <h3>What's on your mind...</h3>
-        </div>
-        <form onSubmit={e => {
+        <form 
+         autoComplete='off'
+         onSubmit={e => {
 					e.preventDefault();
 					addPost({text});
-					setText('')
-				}} className="form my-1">
-          <textarea
-            name="text"
-            cols="30"
-            rows="5"
-						value={text}
-						onChange={e => setText(e.target.value)}
-            placeholder="Create a post"
-            required
-          ></textarea>
-          <input type="submit" className="btn btn-dark my-1" value="Submit" />
+					setText('')}} 
+         className="form my-1">
+          <div className='post-bar'>
+            <input
+                className='post-bar-in'
+                name="text"
+                cols="30"
+                rows="5"
+                value={text}
+                onChange={e => setText(e.target.value)}
+                placeholder="Create a post"
+                required
+              />
+            <button type="submit" className="post-bar-btn" value="Submit">
+              <i class="fas fa-share"></i>
+            </button>
+          </div>
         </form>
       </div>
 	)

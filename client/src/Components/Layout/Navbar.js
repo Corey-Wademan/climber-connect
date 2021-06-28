@@ -56,7 +56,7 @@ const Navbar = ({ auth: { isAuth, loading }, logout }) => {
   )
 
     return (
-      <nav className="navbar bg-dark">
+      <nav className="navbar">
         <h1>
           <Link to="/">
               <img alt='logo' className='logo' src={logo}/> Climbing Connecter

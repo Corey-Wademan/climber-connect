@@ -13,34 +13,35 @@ const CommentItem = ({
 }) => {
 
 	return (
-		<div className="post list-item p-1 my-1">
-			<div>
+		<div className="comment p-1 my-1">
+			<div className='col'>
 				<Link to={`/profile/${user}`}>
 					<img
-						className="round-img"
 						src={avatar}
 						alt=""
 					/>
 				</Link>
 				<h4>{name}</h4>
 			</div>
-			<div>
+			<div className='col'>
 				<p className="my-1">
 					{text}
 				</p>
-				<p className="post-date">
-					Posted on <Moment format='MM/DD/YYYY'>{date}</Moment>
-				</p>
+			</div>
+			<div className='col'>
 				{!auth.loading && user === auth.user._id && (
 					<button
 						onClick={e => removeComment(postId, _id)} 
 						type='button' 
-						className='btn btn-danger'>
+						className='small-btn btn-danger'>
 							<i className='fas fa-times'></i>
 					</button>
 				)}
+				<small className="post-date">
+					Posted on <Moment format='MM/DD/YYYY'>{date}</Moment>
+				</small>
 			</div>
-			</div>
+		</div>
 	)
 }
 
