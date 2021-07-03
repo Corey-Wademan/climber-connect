@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b6995f32.chunk.css",
+    "main.js": "/static/js/main.156a3b11.chunk.js",
+    "main.js.map": "/static/js/main.156a3b11.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a06e69b5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a06e69b5.js.map",
+    "static/js/2.7f567e6e.chunk.js": "/static/js/2.7f567e6e.chunk.js",
+    "static/js/2.7f567e6e.chunk.js.map": "/static/js/2.7f567e6e.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.b6995f32.chunk.css.map": "/static/css/main.b6995f32.chunk.css.map",
+    "static/js/2.7f567e6e.chunk.js.LICENSE.txt": "/static/js/2.7f567e6e.chunk.js.LICENSE.txt",
+    "static/media/climb-logo.bb628557.png": "/static/media/climb-logo.bb628557.png",
+    "static/media/App.css": "/static/media/landing-photo.f577cb19.jpeg",
+    "static/media/spinner.438eee38.gif": "/static/media/spinner.438eee38.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a06e69b5.js",
+    "static/js/2.7f567e6e.chunk.js",
+    "static/css/main.b6995f32.chunk.css",
+    "static/js/main.156a3b11.chunk.js"
+  ]
+}
