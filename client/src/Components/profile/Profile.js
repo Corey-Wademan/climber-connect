@@ -25,7 +25,12 @@ const Profile = ({
                   Back To Profiles
                </Link>
                {auth.isAuth && auth.loading === false && auth.user._id === profile.user._id &&
-                  (<Link to='/edit-profile' className='btn btn-dark'>Edit Profile</Link>)}
+                  (<Link 
+                     to='/edit-profile' 
+                     className='btn btn-dark'
+                     style={{backgroundColor:'#3f729b'}}>
+                        Edit Profile
+                  </Link>)}
                <div className="profile-header my-1">
                   <ProfileTop profile={profile} />
                   <ProfileMain profile={profile} />

@@ -386,7 +386,7 @@
   }
   
   .navbar a:hover {
-    color: #38384cb8;
+    color: rgba(0, 0, 0, 0.288);
   }
   
   .navbar .welcome span {

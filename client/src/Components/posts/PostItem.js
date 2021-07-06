@@ -45,7 +45,8 @@ const PostItem = ({
 										)}
 									</button>
 									<button onClick={e => removeLike(_id)} type="button" className="btn btn-light">
-										<i className="fas fa-thumbs-down"></i>
+										<i className="fas fa-thumbs-down"
+												style={{backgroundColor: '#3f729b59'}}></i>
 									</button>
 									<Link to={`/posts/${_id}`} className="btn btn-primary">
 										Discussion 
