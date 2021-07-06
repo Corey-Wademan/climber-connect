@@ -59,7 +59,7 @@ const Navbar = ({ auth: { isAuth, loading }, logout }) => {
       <nav className="navbar">
         <h1>
           <Link to="/">
-              <img alt='logo' className='logo' src={logo}/> Climbing Connecter
+              <img alt='logo' className='logo' src={logo}/> Send Friends
           </Link>
           </h1>
         {!loading &&

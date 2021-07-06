@@ -6,11 +6,15 @@ import PropTypes from 'prop-types'
 const DashboardActions = ({profile: {user: {_id}}}) => {
    return (
       <div className="dash-buttons">
-         <Link to={`/profile/${_id}`} className="btn btn-light">
-            <i className="fas fa-user-circle text-primary"></i> View Profile
+         <Link to={`/profile/${_id}`} 
+               className="btn btn-light"
+               style={{backgroundColor:'#3f729b'}}>
+            <i className="fas fa-user-circle text-primary"
+               style={{color: 'white'}}></i> View Profile
          </Link>
          <Link to="edit-profile" className="btn btn-light">
-            <i className="fas fa-user-circle text-primary"></i> Edit Profile
+            <i className="fas fa-user-circle text-primary"
+               style={{color: 'white'}}></i> Edit Profile
          </Link>
       </div>
    )
