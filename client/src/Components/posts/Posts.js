@@ -31,7 +31,7 @@ const Posts = ({getPosts, getCurrentProfile, profile: {profile}, auth: {isAuth},
 		<Fragment>
 			<h1 className='large text-primary'>Posts</h1>
 			<p className='lead'>
-				<i className='fas fa-user'></i>Welcome to the ___ community
+				<i className='fas fa-user'></i>Welcome to the climbing community
 			</p>
 			{profile && <PostForm /> }
 			{!profile && (
