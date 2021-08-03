@@ -79,7 +79,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
          ...formData,
          climbing_type: selected
       })
-   };
+   }; 
 
    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 

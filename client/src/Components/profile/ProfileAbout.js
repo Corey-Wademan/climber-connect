@@ -16,7 +16,7 @@ const ProfileAbout = ({ profile: {
    
    return (
       <div className="profile-about bg-light p-2"> 
-         <h2 className="text-primary text-center">Climbing Profile</h2>
+         <h2 className="text-primary text-center">Quick Glance</h2>
          <p>{climbing_since && (<span>Climbing Since: {formatDate(climbing_since)}</span>)}</p>
          <div className='climbing-type'>
             <b>Climbs:</b> 
