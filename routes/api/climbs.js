@@ -7,7 +7,7 @@ const Climb = require('../../models/Climb');
 
 
 // POST api/climbs
-// Add or Update a climb // Access PUBLIC
+// Add a climb // Access PRIVATE
 router.post('/', [auth, [
 	check('grade', 'Grade is required').notEmpty(),
 	check('setting', 'Setting is required').notEmpty(),
