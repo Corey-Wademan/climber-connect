@@ -4,6 +4,7 @@ const {check, validationResult} = require('express-validator');
 const auth = require('../../middleware/auth');
 const Climb = require('../../models/Climb');
 
+
 // POST api/climbs
 // Access PUBLIC
 // Add a climb
@@ -45,6 +46,19 @@ router.post('/', [auth, [
 			console.log(err.message)
       res.status(500).send('Server Error')
 		}
+});
+
+// GET api/climbs/:userID
+// Get all user climbs by their ID // PUBLIC
+router.get('/:user_id', async (req, res) => {
+
+	try {
+		const climbs = await Climbs.findOne({ user: req.params.user_id}).find();
+		res.json(climbs)
+	} catch (err) {
+		console.log(err.message)
+    res.status(500).send("Server Error");
+	}
 });
 
 module.exports = router;
