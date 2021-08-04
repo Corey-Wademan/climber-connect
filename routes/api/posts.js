@@ -5,7 +5,7 @@ const auth = require('../../middleware/auth');
 const Post = require('../../models/Post');
 const User = require('../../models/User');
 
-// POST api/posts 
+// POST api/posts  
 //access Public 
 //Make a post
 router.post('/', [auth, [

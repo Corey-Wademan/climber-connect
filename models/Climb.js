@@ -4,7 +4,7 @@ const ClimbSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'users'
 	},
-	settng: {
+	setting: {
 		type: String,
 		required: true
 	},
@@ -25,6 +25,9 @@ const ClimbSchema = new mongoose.Schema({
 	},
 	location: {
 		type: String,
+	},
+	comment: {
+		type: String
 	}
 })
 
