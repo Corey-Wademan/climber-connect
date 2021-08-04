@@ -484,7 +484,7 @@
     justify-content: center;
     text-align: center;
     border-radius: 15px;
-    background-color: var(--peach);
+    background-color: var(--stone);
     margin-bottom: 2rem;
     width: 30%;
   }
@@ -511,7 +511,7 @@
     display: flex ;   
     text-align: center;
     border-radius: 15px;
-    background-color: var(--peach);
+    background-color: var(--stone);
     margin: 1rem
   }
   
