@@ -37,20 +37,11 @@ router.post('/', [auth, [
 
 
 		try {
-			let climb = await Climb.findOne({ id: req.body._id})
-			if (climb) {
-				// Update 
-				climb = await Climb.findOneAndUpdate({ user: req.user.id}, {$set: climbFields}, {new: true});
-				console.log('Climb Updated');
-				return res.json(climb)
-			}
-
 			// Add new climb
-			const newClimb = new Climb(climbFields);
-			await newClimb.save();
-			console.log('Climb logged');
-			res.json(newClimb);
-			
+				const newClimb = new Climb(climbFields);
+				await newClimb.save();
+				console.log('Climb logged');
+				res.json(newClimb);
 		} catch (err) {
 			console.log(err.message)
       res.status(500).send('Server Error')
@@ -66,6 +57,26 @@ router.get('/:user_id', async (req, res) => {
 	} catch (err) {
 		console.log(err.message)
     res.status(500).send("Server Error");
+	}
+});
+
+// DELETE api/climbs/:climb_id
+// Delete a climb by climb ID // PRIVATE
+router.delete('/:climb_id', auth, async (req, res) => {
+	try {
+		const climb = await Climb.findById(req.params.climb_id);
+		if (!climb) return res.status(404).json({msg: 'Climb does not exist'});
+
+		// Check user
+		if (climb.user.toString() !== req.user.id) {
+			return res.status(401).json({msg: 'User not authorized'})
+		}
+		
+		await climb.remove()
+		res.json({msg: 'Climb has been deleted'})
+	} catch (err) {
+		console.log(err.message)
+    res.status(500).send('Server Error');
 	}
 });
 
