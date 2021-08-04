@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const {check, validationResult} = require('express-validator');
 const auth = require('../../middleware/auth');
+const { findOneAndUpdate } = require( '../../models/Climb' );
 const Climb = require('../../models/Climb');
 
 
 // POST api/climbs
-// Access PUBLIC
-// Add a climb
+// Add or Update a climb // Access PUBLIC
 router.post('/', [auth, [
 	check('grade', 'Grade is required').notEmpty(),
 	check('setting', 'Setting is required').notEmpty(),
@@ -37,6 +37,15 @@ router.post('/', [auth, [
 
 
 		try {
+			let climb = await Climb.findOne({ id: req.body._id})
+			if (climb) {
+				// Update 
+				climb = await Climb.findOneAndUpdate({ user: req.user.id}, {$set: climbFields}, {new: true});
+				console.log('Climb Updated');
+				return res.json(climb)
+			}
+
+			// Add new climb
 			const newClimb = new Climb(climbFields);
 			await newClimb.save();
 			console.log('Climb logged');
@@ -51,7 +60,6 @@ router.post('/', [auth, [
 // GET api/climbs/:userID
 // Get all user climbs by their ID // PUBLIC
 router.get('/:user_id', async (req, res) => {
-
 	try {
 		const climbs = await Climbs.findOne({ user: req.params.user_id}).find();
 		res.json(climbs)
