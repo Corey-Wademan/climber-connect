@@ -8,6 +8,10 @@ export const grades = ["5.0", "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", "5.7", "
 export const climbingTypes = [
    { name: "Trad", id: 1 },
    { name: "Sport", id: 2 },
-   { name: "Boulder", id: 3 }
+   { name: "Boulder", id: 3 },
+   { name: "Gym", id: 4 }
 ];
 
+export const pitchAmount = [
+   '1', '2', '3', '4', '5', '6', '7', '8', '9+'
+];

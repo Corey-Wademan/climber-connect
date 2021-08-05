@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const {check, validationResult} = require('express-validator');
 const auth = require('../../middleware/auth');
-const { findOneAndUpdate } = require( '../../models/Climb' );
 const Climb = require('../../models/Climb');
 
 

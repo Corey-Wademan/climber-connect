@@ -21,7 +21,7 @@ const ClimbSchema = new mongoose.Schema({
 		default: Date.now
 	},
 	pitches: {
-		type: Number
+		type: String
 	},
 	location: {
 		type: String,
@@ -31,4 +31,4 @@ const ClimbSchema = new mongoose.Schema({
 	}
 })
 
-module.exports = Climbs = mongoose.model('climb', ClimbSchema);
+module.exports = Climb = mongoose.model('climb', ClimbSchema);
