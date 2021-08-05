@@ -59,7 +59,8 @@ const Navbar = ({ auth: { isAuth, loading }, logout }) => {
       <nav className="navbar">
         <h1>
           <Link to="/">
-              <img alt='logo' className='logo' src={logo}/> Send Friends
+              <img alt='logo' className='logo' src={logo}/> 
+              <span style={{fontWeight:'100'}}>Send Friends</span>
           </Link>
           </h1>
         {!loading &&

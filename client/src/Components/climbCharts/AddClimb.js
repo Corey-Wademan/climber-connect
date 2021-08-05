@@ -15,7 +15,7 @@ const AddClimb = ({addClimb, history}) => {
 		comment: ''
 	})
 
-	const {setting, grade, style, date, pitches, location, comment} = formData;
+	const {grade, style, date, pitches, location, comment} = formData;
 
 	// Max Date Logic For Calendar Input
 	let today = new Date(); 
@@ -46,32 +46,31 @@ const AddClimb = ({addClimb, history}) => {
 			<small>* = required field</small>
 			<form className="form" onSubmit={e => onSubmit(e)}>
 				<div className='form-group'>
-					<input type="text" placeholder="*Location" name="location" value={location} onChange={e => onChange(e)}/>
+						<small className='form-text'>*</small>
+						<div className='form-check'>
+							<label>
+								<input type="radio" required name='setting' value='outdoors' onChange={e => onChange(e)}/> Outdoor
+							</label>
+						</div>
+						<div className='form-check'>
+							<label>
+								<input type="radio" required name='setting' value='gym' onChange={e => onChange(e)}/> Gym
+							</label>
+						</div>
 				</div>
 
 				<div className='form-group'>
-					<div className='form-check'>
-						<label>
-							<input type="radio" name={setting} value='outdoors' onChange={e => onChange(e)}/> Outdoor
-						</label>
-					</div>
-					<div className='form-check'>
-						<label>
-							<input type="radio" name={setting} value='gym' onChange={e => onChange(e)}/> Gym
-						</label>
-					</div>
+					<input type="text" required placeholder="Where" autoComplete='off' name="location" value={location} onChange={e => onChange(e)}/>
 				</div>
 
 				<div className='form-group'>
-					<label>
-						<input type='date' name='date' value={date} max={today} onChange={e => onChange(e)} />
-						When
-					</label>
+					<small className='form-text'>*When</small>
+					<input type='date' name='date' value={date} max={today} onChange={e => onChange(e)} />
 				</div>
 
 				<div className='form-group'>
-					<select type="text" name="style" value={style} onChange={e => onChange(e)}>
-							<option value="" disabled>Style</option>
+					<select type="text" required name="style" value={style} onChange={e => onChange(e)}>
+							<option value="" disabled>*Style</option>
 							<option value='boulder'>Boulder</option>
 							<option value='sport'>Sport</option>
 							<option value='trad'>Trad</option>
@@ -79,8 +78,8 @@ const AddClimb = ({addClimb, history}) => {
 				</div>
 
 				<div className='form-group'>
-					<small className='form-text'>Grade</small>
-					<select name='grade' value={grade} onChange={e => onChange(e)}>
+					<select name='grade' required value={grade} onChange={e => onChange(e)}>
+					<option value="" disabled>*Grade</option>
 						{grades.map(num => (
 							<option key={num} value={num}>
 								{num}

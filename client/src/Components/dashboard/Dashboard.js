@@ -21,9 +21,8 @@ const Dashboard = ({ getCurrentProfile, deleteAccount, auth: { user }, profile: 
             <p className='lead'>
                <i className='fas fa-user'> Welcome {user && user.name.trim().split(' ')[0]}</i>
             </p>
-         </div>
          
-         {profile !== null ?
+            {profile !== null ?
             <div className='dash-actions'>
                <DashboardActions 
                   profile={profile} 
@@ -38,7 +37,7 @@ const Dashboard = ({ getCurrentProfile, deleteAccount, auth: { user }, profile: 
                <p>You have not yet created a profile, join the community and add some info!</p>
                <Link to="/create-profile" className='btn btn-primary my-1'>Create Profile</Link>
             </Fragment>}
-
+         </div>
         <AddClimb />    
       </div>;
 };

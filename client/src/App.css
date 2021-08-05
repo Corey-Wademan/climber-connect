@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;500;700&family=Roboto:wght@100;300;400;500&display=swap');        
+        
         /* Global Styles */
 :root {
   --teal: #587983;
@@ -10,6 +13,7 @@
   --western: #d4b5b2;
   --danger-color: #dc3545;
   --success-color: #28a745;
+  --submit: #35a0a7;
 }
 
 * {
@@ -197,6 +201,10 @@ img {
 }
 
 .alert {
+  position: fixed;
+  text-align: center;
+  top: 50px;
+  width: 90%;
   padding: 0.8rem;
   margin: 1rem 0;
   opacity: 0.9;
@@ -208,7 +216,7 @@ img {
 .bg-primary,
 .badge-primary,
 .alert-primary {
-  background: var(--ocean);
+  background: var(--submit);
   color: #fff;
 }
 
@@ -251,6 +259,14 @@ img {
   background: #fff;
   color: #333;
   border: #ccc solid 1px;
+}
+
+.btn-ocean,
+.bg-ocean,
+.badge-ocean,
+.alert-ocean {
+  background: var(--ocean);
+  
 }
 
 .btn:hover {
@@ -367,6 +383,8 @@ button {
   top: 0;
   border-bottom: solid 1px var(--teal);
   background-color: var(--ocean);
+  font-family: 'Roboto';
+  font-weight: 100;
 }
 
 .navbar ul {
@@ -401,10 +419,17 @@ button {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
 }
+
 .dash-actions {
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .dash-actions { flex-direction: row; }
 }
           /* Landing Page */
 .landing {
@@ -763,7 +788,7 @@ button {
   }
 
       /* Climb Form */
-.climb-container-form {
+.climb-form-container {
   height: 100%;
-  width: 50%;
+  width: 800px;
 }
