@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {addClimb} from '../../actions/climb'
-import { grades, pitchAmount } from '../profile-forms/ProfileSelectors'
+import { boulderGrades, grades, pitchAmount } from '../profile-forms/ProfileSelectors'
 
 const AddClimb = ({addClimb, history}) => {
 	const [formData, setFormData] = useState({
@@ -41,7 +41,7 @@ const AddClimb = ({addClimb, history}) => {
 
 	return (
 		<div className='climb-form-container'>
-			<h1>Add a climb</h1>
+			<h1>Add climb</h1>
 
 			<small>* = required field</small>
 			<form className="form" onSubmit={e => onSubmit(e)}>
@@ -80,17 +80,28 @@ const AddClimb = ({addClimb, history}) => {
 				<div className='form-group'>
 					<select name='grade' required value={grade} onChange={e => onChange(e)}>
 					<option value="" disabled>*Grade</option>
-						{grades.map(num => (
+					{/*CHECK IF STYLE IS BOULDER OR LEAD*/}
+
+					{style === 'boulder' ? 
+					boulderGrades.map(num => (
+						<option key={num} value={num}>
+								{num}
+							</option>
+					))	
+				 :
+						grades.map(num => (
 							<option key={num} value={num}>
 								{num}
 							</option>
-						))}
+						))
+					}
 					</select>
 				</div>
 
 				<div className='form-group'>
 				<small className='form-text'># of pitches</small>
 					<select name='pitches' value={pitches} onChange={e => onChange(e)}>
+						
 						{pitchAmount.map(pitch => (
 							<option key={pitch} value={pitch}>
 								{pitch}
