@@ -80,15 +80,17 @@ const AddClimb = ({addClimb, history}) => {
 				<div className='form-group'>
 					<select name='grade' required value={grade} onChange={e => onChange(e)}>
 					<option value="" disabled>*Grade</option>
+
 					{/*CHECK IF STYLE IS BOULDER OR LEAD*/}
 
-					{style === 'boulder' ? 
-					boulderGrades.map(num => (
+					{style === 'boulder'
+					? 
+						boulderGrades.map(num => (
 						<option key={num} value={num}>
 								{num}
 							</option>
-					))	
-				 :
+						))	
+					:
 						grades.map(num => (
 							<option key={num} value={num}>
 								{num}
@@ -99,9 +101,8 @@ const AddClimb = ({addClimb, history}) => {
 				</div>
 
 				<div className='form-group'>
-				<small className='form-text'># of pitches</small>
+					<small className='form-text'># of pitches</small>
 					<select name='pitches' value={pitches} onChange={e => onChange(e)}>
-						
 						{pitchAmount.map(pitch => (
 							<option key={pitch} value={pitch}>
 								{pitch}

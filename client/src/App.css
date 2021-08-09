@@ -78,6 +78,10 @@ img {
   transition: .2s;
 }
 
+.hide {
+  display: none;
+}
+
           /* Text Styles*/
 .x-large {
   font-size: 4rem;
@@ -791,4 +795,12 @@ button {
 .climb-form-container {
   height: 100%;
   width: 800px;
+}
+
+    /* Charts */
+.profile-chart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -51,7 +51,7 @@ router.post('/', [auth, [
 // Get all user climbs by their ID // PUBLIC
 router.get('/:user_id', async (req, res) => {
 	try {
-		const climbs = await Climbs.findOne({ user: req.params.user_id}).find();
+		const climbs = await Climb.find({ user: req.params.user_id});
 		res.json(climbs)
 	} catch (err) {
 		console.log(err.message)

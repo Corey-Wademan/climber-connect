@@ -27,7 +27,9 @@ const Posts = ({getPosts, getCurrentProfile, profile: {profile}, auth: {isAuth},
 		)
 	}
 
-	return loading ? <Spinner /> : (
+	return loading 
+	? <Spinner /> 
+	: (
 		<Fragment>
 			<h1 className='large text-primary'>Posts</h1>
 			<p className='lead'>
