@@ -1,4 +1,4 @@
-import { GET_CLIMBS, DELETE_CLIMB, ADD_CLIMB, CLIMB_ERROR } from "../actions/types";
+import { DELETE_CLIMB, ADD_CLIMB, CLIMB_ERROR } from "../actions/types";
 
 const initialState = {
 	climbs: [],
@@ -11,12 +11,6 @@ function climbReducer(state = initialState, action) {
 	const {type, payload} = action;
 
 	switch(type) {
-		case GET_CLIMBS:
-			return {
-				...state,
-				climbs: payload,
-				loading: false
-			}
 		case ADD_CLIMB:
 			return {
 				...state,

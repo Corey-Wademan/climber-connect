@@ -1,13 +1,10 @@
 import React, {Fragment} from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import AboutChart from '../charts/AboutChart'
 
 
-const ProfileChart = props => {
+const ProfileChart = ({profile: {climbs}}) => {
 	
-	
-	
+	console.log(climbs)
 	return (
 		<div className='profile-chart-container'>
 			<h1>Stats</h1>
@@ -16,8 +13,5 @@ const ProfileChart = props => {
 	)
 }
 
-ProfileChart.propTypes = {
-
-}
 
 export default ProfileChart

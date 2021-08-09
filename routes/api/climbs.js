@@ -47,17 +47,7 @@ router.post('/', [auth, [
 		}
 });
 
-// GET api/climbs/:userID
-// Get all user climbs by their ID // PUBLIC
-router.get('/:user_id', async (req, res) => {
-	try {
-		const climbs = await Climb.find({ user: req.params.user_id});
-		res.json(climbs)
-	} catch (err) {
-		console.log(err.message)
-    res.status(500).send("Server Error");
-	}
-});
+
 
 // DELETE api/climbs/:climb_id
 // Delete a climb by climb ID // PRIVATE

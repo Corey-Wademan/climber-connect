@@ -25,7 +25,7 @@ const Profile = ({
                <Link to='/profiles' className='btn btn-dark'>
                   Back To Profiles
                </Link>
-               {auth.isAuth && auth.loading === false && auth.user._id === profile.user._id &&
+               {auth.isAuth && auth.loading === false && auth.user._id === profile.profile.user._id &&
                   (<Link 
                      to='/edit-profile' 
                      className='btn btn-dark'
@@ -36,7 +36,7 @@ const Profile = ({
                   <ProfileMain profile={profile} />
                   <ProfileAbout profile={profile} />
                </div>
-               <ProfileChart />
+               <ProfileChart profile={profile}/>
             </Fragment>)}
       </Fragment>
    );

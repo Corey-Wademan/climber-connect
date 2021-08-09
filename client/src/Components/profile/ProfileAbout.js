@@ -3,15 +3,17 @@ import PropTypes from 'prop-types'
 import { Fragment } from 'react'
 import formatDate from '../../utils/formatDate'
 
-const ProfileAbout = ({ profile: {
-   climbing_type,
-   preferred_belay_device,
-   leads,
-   follows,
-   additional_info,
-   best_time,
-   climbing_since,
-   user: {name}
+const ProfileAbout = ({ profile: { 
+   profile: {
+      climbing_type,
+      preferred_belay_device,
+      leads,
+      follows,
+      additional_info,
+      best_time,
+      climbing_since,
+      user: {name}
+   }
 } }) => {
    
    return (

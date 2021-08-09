@@ -39,6 +39,5 @@ export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 
 // Climbs
 export const ADD_CLIMB = 'ADD_CLIMB';
-export const GET_CLIMBS = 'GET_CLIMBS';
 export const DELETE_CLIMB = 'DELETE_CLIMB';
 export const CLIMB_ERROR = 'CLIMB_ERROR';
