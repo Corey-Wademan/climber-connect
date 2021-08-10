@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 
 const DashboardActions = ({profile: {user: {_id}}}) => {
+
    return (
       <div className="dash-buttons">
          <Link to={`/profile/${_id}`} 

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {addClimb} from '../../actions/climb'
-import { boulderGrades, grades, pitchAmount } from '../profile-forms/ProfileSelectors'
+import { boulderGrades, grades, pitchAmount } from './ProfileSelectors'
 
 const AddClimb = ({addClimb, history}) => {
 	const [formData, setFormData] = useState({

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { deleteAccount, getCurrentProfile } from '../../actions/profile';
 import {Spinner} from '../Layout/Spinner';
-import AddClimb from '../charts/AddClimb';
+import AddClimb from '../profile-forms/AddClimb'
 import DashboardActions from './DashboardActions';
 
 

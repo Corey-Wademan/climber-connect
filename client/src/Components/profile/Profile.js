@@ -6,7 +6,7 @@ import { Spinner } from '../Layout/Spinner'
 import { getProfileById } from '../../actions/profile'
 import ProfileMain from './ProfileMain';
 import ProfileAbout from './ProfileAbout'
-import ProfileChart from '../charts/ProfileChart';
+import ProfileCharts from '../charts/ProfileCharts';
 
 const Profile = ({
    getProfileById,
@@ -36,7 +36,7 @@ const Profile = ({
                   <ProfileMain profile={profile} />
                   <ProfileAbout profile={profile} />
                </div>
-               <ProfileChart profile={profile}/>
+               <ProfileCharts profile={profile}/>
             </Fragment>)}
       </Fragment>
    );
