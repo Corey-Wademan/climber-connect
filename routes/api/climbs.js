@@ -9,7 +9,6 @@ const Climb = require('../../models/Climb');
 // Add a climb // Access PRIVATE
 router.post('/', [auth, [
 	check('grade', 'Grade is required').notEmpty(),
-	check('setting', 'Setting is required').notEmpty(),
 	check('style', 'Climb style is required').notEmpty()
 ]], async (req, res) => {
 	const errors = validationResult(req);

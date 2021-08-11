@@ -60,7 +60,7 @@ const AddClimb = ({addClimb, history}) => {
 				</div>
 
 				<div className='form-group'>
-					<input type="text" required placeholder="Where" autoComplete='off' name="location" value={location} onChange={e => onChange(e)}/>
+					<input type="text" placeholder="Where" autoComplete='off' name="location" value={location} onChange={e => onChange(e)}/>
 				</div>
 
 				<div className='form-group'>
