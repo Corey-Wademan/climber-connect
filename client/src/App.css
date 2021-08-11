@@ -803,4 +803,24 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1rem;
+}
+.stats-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  height: 100px;
+  color: white;
+  background: var(--mint);
+  border: var(--stone) 1px solid;
+  border-radius: 15px;
+  justify-content: center;
+}
+.qk-stats {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  width: 60vw;
 }
