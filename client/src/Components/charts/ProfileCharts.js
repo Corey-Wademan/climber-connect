@@ -1,8 +1,7 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import AboutChart from './AboutChart'
-import ProgressCharts from './ProgressCharts'
-import GeneralCharts from './GeneralCharts'
+import ProgressCharts from './progress-charts/ProgressCharts'
+import GeneralCharts from './general-charts/GeneralCharts'
 
 
 const ProfileCharts = ({profile: {climbs}}) => {
@@ -12,9 +11,8 @@ const ProfileCharts = ({profile: {climbs}}) => {
 
 	const calcMost = (arr) => {
     return arr.sort((a,b) =>
-          arr.filter(v => v===a).length - arr.filter(v => v===b).length
-    ).pop();
-}
+          arr.filter(val => val===a).length - arr.filter(val => val===b).length).pop();
+	}
 	
 	console.log()
 	return (
@@ -28,7 +26,6 @@ const ProfileCharts = ({profile: {climbs}}) => {
 				</div>
 			</div>
 
-			<AboutChart climbs={climbs} />
 			<ProgressCharts climbs={climbs} />
 			<GeneralCharts climbs={climbs} />
 		</div>
