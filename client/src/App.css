@@ -829,6 +829,8 @@ button {
 .charts-row {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  width: 55%;
 }
 .chart {
   display: flex;
