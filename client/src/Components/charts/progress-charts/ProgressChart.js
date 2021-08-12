@@ -7,21 +7,13 @@ import {  LineChart,Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 const ProgressChart = ({climbs}) => {
 
 
-	// Filter top rope climbs between <5.10 && >5.10 then sorts, then concat into totalRopeArr
-	const sm = climbs.filter(climb => {
+	// Filter sport / trad climbs between <5.10 && >5.10 then sorts, then concat into totalRopeArr
+	const total = climbs.filter(climb => {
 		return ( 
 			climb.style !== 'boulder' 
-			&& climb.grade === '5.0' || climb.grade === '5.1' || climb.grade === '5.2' || climb.grade === '5.3' || climb.grade === '5.4' || climb.grade === '5.5' || climb.grade === '5.6' || climb.grade === '5.6' || climb.grade === '5.7' || climb.grade === '5.8' || climb.grade === '5.9' 
-			)
-	})
-
-	const lrg = climbs.filter(climb => {
-		return ( climb.style !== 'boulder'
-		&& climb.grade === '5.10' || climb.grade === '5.11' || climb.grade === '5.12' || climb.grade === '5.13' || climb.grade === '5.14' || climb.grade === '5.15'
+			&& climb.grade === '5.0' || climb.grade === '5.1' || climb.grade === '5.2' || climb.grade === '5.3' || climb.grade === '5.4' || climb.grade === '5.5' || climb.grade === '5.6' || climb.grade === '5.6' || climb.grade === '5.7' || climb.grade === '5.8' || climb.grade === '5.9' || climb.grade === '5.10' || climb.grade === '5.11' || climb.grade === '5.12' || climb.grade === '5.13' || climb.grade === '5.14' || climb.grade === '5.15'
 		)
-	}).sort((a,b) => a.grade-b.grade)
-
-	const total = sm.concat(lrg)
+	})
 
 	// Filter and sorts boulder climbs
 	let g;
@@ -31,40 +23,48 @@ const ProgressChart = ({climbs}) => {
 	const calcHighest = (arr, date) => {
 		return arr.pop()
 	}
-
-	// Calculate topRope Units
-	const tickFormatter = arr => {
-		return arr.map(climb => climb)
-	}
-	
 	
 
-	const data = total.map((climb) => ({ name: formatDate(climb.date), Grade: climb.grade}));
-	console.log(data)
+	
+
+	const data = [
+		{name: total.at(-1).date.slice(5,10), Grade: total.at(-1).grade},
+		{name: total.at(-2).date.slice(5,10), Grade: total.at(-2).grade},
+		{name: total.at(-3).date.slice(5,10), Grade: total.at(-3).grade},
+		{name: total.at(-4).date.slice(5,10), Grade: total.at(-4).grade},
+		{name: total.at(-5).date.slice(5,10), Grade: total.at(-5).grade},
+		{name: total.at(-6).date.slice(5,10), Grade: total.at(-6).grade},
+		{name: total.at(-7).date.slice(5,10), Grade: total.at(-7).grade},
+		{name: total.at(-8).date.slice(5,10), Grade: total.at(-8).grade},
+		{name: total.at(-9).date.slice(5,10), Grade: total.at(-9).grade},
+		{name: total.at(-10).date.slice(5,10), Grade: total.at(-10).grade}
+	]
+
+	console.log(climbs)
 
 
 	 
 	return (
 		<div className='chart'>
-			<h3>Most Recent Climbs</h3>
+			<h3>Recently Logged Sport Climbs</h3>
 			<LineChart
-				width={500}
+				width={800}
 				height={300}
 				data={data}
-				margin={{
-				top: 5,
-				right: 30,
-				left: 20,
-				bottom: 5
-				}}
+				margin={{top: 5, right: 30, left: 20, bottom: 5}}
 				>
-				<CartesianGrid strokeDasharray="3 3" />
-				<XAxis dataKey="name" />
-				<YAxis 
+				<CartesianGrid strokeDasharray="3 3"/>
+				<XAxis 
+					dataKey='name'
+					interval={0}
+					label={{value: 'Date', position: 'insideBottom', offset: -5}}
+					/>
+				<YAxis
+					interval={0}
 					type='category'
-					domain={['dataMin', 'dataMax']} 
-					ticks={['5.0', '5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.8', '5.9', '5.10', '5.11', '5.12', '5.13', '5.14', '5.15']}
-					dataKey="Grade"/>
+					dataKey='Grade'
+					ticks={["5.0", "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", "5.7", "5.8", "5.9", "5.10", "5.11", "5.12", "5.13", "5.14", "5.15"]}
+					/>
 				<Tooltip />
 				<Legend />
 				<Line

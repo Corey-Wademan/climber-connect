@@ -14,14 +14,13 @@ const ProfileCharts = ({profile: {climbs}}) => {
           arr.filter(val => val===a).length - arr.filter(val => val===b).length).pop();
 	}
 	
-	console.log()
 	return (
 		<div className='profile-chart-container'>
 			<div className='stats-top'>
 				<h1>Stats</h1>
 				<div className='qk-stats'>
 					<h3>Routes Logged: {climbs.length}</h3>
-					<h3>Average Grade: {calcMost(totalGrades)}</h3>
+					<h3>Most Frequent Climb: {calcMost(totalGrades)}</h3>
 					<h3>Most Active In: {calcMost(totalStyles)}</h3>
 				</div>
 			</div>
