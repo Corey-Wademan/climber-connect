@@ -38,13 +38,17 @@ const PostItem = ({
 							<div className='post-btns'>
 								{showActions && 
 								<Fragment>
-									<button onClick={e => addLike(_id)} type="button" className="btn btn-light">
+									<button onClick={e => addLike(_id)} type="button" style={{background: '#0c9c2dd4'}} className="btn btn-light">
 										<i className="fas fa-thumbs-up"></i>
 										{likes.length > 0 && (
 											<span> {likes.length}</span>
 										)}
 									</button>
+<<<<<<< HEAD
 									<button onClick={e => removeLike(_id)} type="button" className="btn btn-light">
+=======
+									<button onClick={e => removeLike(_id)} type="button" style={{background: '#ff7d1cd9'}} className="btn btn-light">
+>>>>>>> main
 										<i className="fas fa-thumbs-down"></i>
 									</button>
 									<Link to={`/posts/${_id}`} className="btn btn-primary">

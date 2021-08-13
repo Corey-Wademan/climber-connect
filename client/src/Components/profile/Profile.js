@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { Spinner } from '../Layout/Spinner'
 import { getProfileById } from '../../actions/profile'
-import ProfileTop from './ProfileMain';
-import ProfileMain from './ProfileAbout'
+import ProfileMain from './ProfileMain';
+import ProfileAbout from './ProfileAbout'
+import ProfileCharts from '../charts/ProfileCharts';
 
 const Profile = ({
    getProfileById,
@@ -24,7 +25,7 @@ const Profile = ({
                <Link to='/profiles' className='btn btn-dark'>
                   Back To Profiles
                </Link>
-               {auth.isAuth && auth.loading === false && auth.user._id === profile.user._id &&
+               {auth.isAuth && auth.loading === false && auth.user._id === profile.profile.user._id &&
                   (<Link 
                      to='/edit-profile' 
                      className='btn btn-dark'
@@ -32,9 +33,10 @@ const Profile = ({
                         Edit Profile
                   </Link>)}
                <div className="profile-header my-1">
-                  <ProfileTop profile={profile} />
                   <ProfileMain profile={profile} />
+                  <ProfileAbout profile={profile} />
                </div>
+               <ProfileCharts profile={profile}/>
             </Fragment>)}
       </Fragment>
    );

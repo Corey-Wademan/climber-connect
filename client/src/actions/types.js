@@ -36,3 +36,8 @@ export const UPDATE_LIKES = 'UPDATE_LIKES';
 // Comments
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
+
+// Climbs
+export const ADD_CLIMB = 'ADD_CLIMB';
+export const DELETE_CLIMB = 'DELETE_CLIMB';
+export const CLIMB_ERROR = 'CLIMB_ERROR';

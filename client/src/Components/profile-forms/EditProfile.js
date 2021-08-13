@@ -136,8 +136,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
                   checked={climbing_type.includes(climb.name)}
                   value={climb.name}
                   onChange={() => updateClimbTypes(climb.name)}
-                  />
-                  {climb.name}
+                  /> {climb.name}
                   <br></br>
                </label>
                

@@ -5,9 +5,8 @@ const auth = require('../../middleware/auth');
 const Post = require('../../models/Post');
 const User = require('../../models/User');
 
-// POST api/posts 
-//access Public 
-//Make a post
+// POST api/posts  
+// PUBLIC // Make a post
 router.post('/', [auth, [
     check('text', 'Text is required').notEmpty()
 ]], async (req, res) => {
@@ -35,7 +34,7 @@ router.post('/', [auth, [
 });
 
 // GET api/posts //access public (add auth if only posts can be viewed from account) 
-//Get all posts 
+// Get all posts 
 router.get('/', async (req, res) => { 
 
     try {
@@ -49,8 +48,8 @@ router.get('/', async (req, res) => {
 });
 
 // GET api/posts/:id (postid)
-//access public (add auth if only posts can be viewed from account) 
-//Get post by id 
+// PUBLIC (add auth if only posts can be viewed from account) 
+// Get post by id 
 router.get('/:id', async (req, res) => {
 
     try {

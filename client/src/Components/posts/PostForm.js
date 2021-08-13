@@ -27,7 +27,7 @@ const PostForm = ({addPost}) => {
                 required
               />
             <button type="submit" className="post-bar-btn" value="Submit">
-              <i class="fas fa-share"></i>
+              <i className="fas fa-share"></i>
             </button>
           </div>
         </form>

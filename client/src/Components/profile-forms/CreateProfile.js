@@ -44,8 +44,7 @@ const CreateProfile = ({createProfile, history}) => {
    today = yyyy+'-'+MM+'-'+dd;
 
 
-   // Currently takes in the last of selected values
-   // Change to take in all values
+   // Updates climbing types if user wants to update profile
    const updateClimbTypes = e => {
       let selected = climbing_type
       let find = selected.indexOf(e)
@@ -116,7 +115,8 @@ const CreateProfile = ({createProfile, history}) => {
                   value={climb.name}
                   onChange={() => updateClimbTypes(climb.name)}
                   selected={climbing_type.includes(climb.id)}
-                  /> {climb.name}
+                  /> 
+                  {climb.name}
                   <br></br>
                </label>
                

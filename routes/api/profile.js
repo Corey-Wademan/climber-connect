@@ -4,6 +4,7 @@ const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const POST = require('../../models/Post');
+const Climb = require('../../models/Climb')
 const {check, validationResult} = require('express-validator')
 
  
@@ -43,7 +44,10 @@ router.get('/user/:user_id', async (req, res) => {
         if (!profile) {
             return res.status(400).send({msg: 'Profile not found'})
         }
-        res.json(profile)
+
+        const climbs = await Climb.find({ user: req.params.user_id});
+        
+		res.json({profile, climbs})
     } catch (err) {
         console.log(err.message);
         if (err.kind === 'ObjectId') return res.status(400).send({ msg: 'Profile not found' });
@@ -173,5 +177,17 @@ router.delete('/', auth, async (req, res) => {
         res.status(500).send('Server Error');
     }
 }); 
+
+// GET api/profile/user/:userID
+// Get all user climbs by their ID // PUBLIC
+/* router.get('/user/:user_id', async (req, res) => {
+	try {
+		const climbs = await Climb.findOne({ user: req.params.user_id});
+		res.json(climbs)
+	} catch (err) {
+		console.log(err.message)
+    res.status(500).send("Server Error");
+	}
+}); */
 
 module.exports = router;
