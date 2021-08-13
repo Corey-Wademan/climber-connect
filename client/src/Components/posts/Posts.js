@@ -33,11 +33,7 @@ const Posts = ({getPosts, getCurrentProfile, profile: {profile}, auth: {isAuth},
 		<Fragment>
 			<h1 className='large text-primary'>Posts</h1>
 			<p className='lead'>
-<<<<<<< HEAD
-				<i className='fas fa-user'></i>Welcome to the climbing community
-=======
 				<i className='fas fa-user'></i>Welcome to the send community
->>>>>>> main
 			</p>
 			{profile && <PostForm /> }
 			{!profile && (
