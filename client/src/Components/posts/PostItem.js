@@ -44,11 +44,7 @@ const PostItem = ({
 											<span> {likes.length}</span>
 										)}
 									</button>
-<<<<<<< HEAD
-									<button onClick={e => removeLike(_id)} type="button" className="btn btn-light">
-=======
 									<button onClick={e => removeLike(_id)} type="button" style={{background: '#ff7d1cd9'}} className="btn btn-light">
->>>>>>> main
 										<i className="fas fa-thumbs-down"></i>
 									</button>
 									<Link to={`/posts/${_id}`} className="btn btn-primary">
