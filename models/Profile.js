@@ -4,6 +4,10 @@ const ProfileSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
     },
+    climbs: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'climb'
+    }],
     age: {
         type: Number,
         required: true

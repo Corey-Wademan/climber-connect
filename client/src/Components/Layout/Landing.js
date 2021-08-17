@@ -15,7 +15,7 @@ const Landing = ({ isAuth }) => {
         <div className="landing-inner">
          {/* <h1 className="x-large"></h1> */}
           <p className="lead">
-            Create a profile, find partners, add recent climbs and track your progress, share posts, message other climbers, spread the stoke. 
+            Create a profile, find climbing partners, add recent climbs, track and chart your progress, share posts and comments
           </p>
           <div className="buttons">
             <Link to="/register" className="btn btn-primary">Sign Up</Link>
