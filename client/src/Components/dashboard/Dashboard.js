@@ -9,9 +9,6 @@ import DashboardActions from './DashboardActions';
 
 
 const Dashboard = ({ getCurrentProfile, deleteAccount, auth: { user }, profile: { profile, loading } }) => {
-
-   console.log(profile)
-
    useEffect(() => {
       getCurrentProfile();
    }, [getCurrentProfile]); 

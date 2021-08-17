@@ -32,16 +32,8 @@ const ProgressChart = ({climbs}) => {
 		{name: total.at(-2).date.slice(5,10), Grade: total.at(-2).grade},
 		{name: total.at(-3).date.slice(5,10), Grade: total.at(-3).grade},
 		{name: total.at(-4).date.slice(5,10), Grade: total.at(-4).grade},
-		{name: total.at(-5).date.slice(5,10), Grade: total.at(-5).grade},
-		{name: total.at(-6).date.slice(5,10), Grade: total.at(-6).grade},
-		{name: total.at(-7).date.slice(5,10), Grade: total.at(-7).grade},
-		{name: total.at(-8).date.slice(5,10), Grade: total.at(-8).grade},
-		{name: total.at(-9).date.slice(5,10), Grade: total.at(-9).grade},
-		{name: total.at(-10).date.slice(5,10), Grade: total.at(-10).grade}
+		{name: total.at(-5).date.slice(5,10), Grade: total.at(-5).grade}
 	]
-
-	console.log(climbs)
-
 
 	 
 	return (
