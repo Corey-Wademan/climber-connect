@@ -9,8 +9,6 @@ const ProfileCharts = ({profile: {climbs}}) => {
 	const totalGrades = climbs.map(climb => climb.grade)
 	const totalStyles = climbs.map(climb => climb.style)
 
-	console.log(climbs)
-
 	const calcMost = (arr) => {
     return arr.sort((a,b) =>
           arr.filter(val => val===a).length - arr.filter(val => val===b).length).pop();

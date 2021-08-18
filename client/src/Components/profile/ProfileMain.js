@@ -2,13 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import formatDate from '../../utils/formatDate'
 
-const ProfileMain = ({ profile: { profile: {
-   age,
-   location,
-   gender,
-   social,
-   member_since,
-   user: {name, avatar} 
+const ProfileMain = ({ profile: {
+   profile: {
+      age,
+      location,
+      gender,
+      social,
+      member_since,
+      user: {name, avatar} 
    }
 }}) => {
    return (
