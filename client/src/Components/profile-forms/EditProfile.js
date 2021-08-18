@@ -26,26 +26,28 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
    });
    const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
+   console.log(profile)
+
    useEffect(() => {
       getCurrentProfile();
 
       setFormData({
-         age: loading || !profile.age ? '' : profile.age,
-         location: loading || !profile.location ? '' : profile.location,
-         gender: loading || !profile.gender ? '' : profile.gender,
-         preferred_belay_device: loading || !profile.preferred_belay_device ? '' : profile.preferred_belay_device,
-         best_time: loading || !profile.best_time ? '' : profile.best_time,
-         climbing_since: loading || !profile.climbing_since ? '' : profile.climbing_since,
-         climbing_type: loading || !profile.climbing_type ? '' : profile.climbing_type,
-         tradLead: loading || !profile.leads.tradLead ? '' : profile.leads.tradLead,
-         sportLead: loading || !profile.leads.sportLead ? '' : profile.leads.sportLead,
-         tradFollow: loading || !profile.follows.tradFollow ? '' : profile.follows.tradFollow,
-         sportFollow: loading || !profile.follows.sportFollow ? '' : profile.follows.sportFollow,
-         additional_info: loading || !profile.additional_info ? '' : profile.additional_info,
-         twitter: loading || !profile.social ? '' : profile.social.twitter,
-         facebook: loading || !profile.social ? '' : profile.social.facebook,
-         instagram: loading || !profile.social ? '' : profile.social.instagram,
-         youtube: loading || !profile.social ? '' : profile.social.youtube,
+         age: loading || !profile.profile.age ? '' : profile.profile.age,
+         location: loading || !profile.profile.location ? '' : profile.profile.location,
+         gender: loading || !profile.profile.gender ? '' : profile.profile.gender,
+         preferred_belay_device: loading || !profile.profile.preferred_belay_device ? '' : profile.profile.preferred_belay_device,
+         best_time: loading || !profile.profile.best_time ? '' : profile.profile.best_time,
+         climbing_since: loading || !profile.profile.climbing_since ? '' : profile.profile.climbing_since,
+         climbing_type: loading || !profile.profile.climbing_type ? '' : profile.profile.climbing_type,
+         tradLead: loading || !profile.profile.leads.tradLead ? '' : profile.profile.leads.tradLead,
+         sportLead: loading || !profile.profile.leads.sportLead ? '' : profile.profile.leads.sportLead,
+         tradFollow: loading || !profile.profile.follows.tradFollow ? '' : profile.profile.follows.tradFollow,
+         sportFollow: loading || !profile.profile.follows.sportFollow ? '' : profile.profile.follows.sportFollow,
+         additional_info: loading || !profile.profile.additional_info ? '' : profile.profile.additional_info,
+         twitter: loading || !profile.profile.social ? '' : profile.profile.social.twitter,
+         facebook: loading || !profile.profile.social ? '' : profile.profile.social.facebook,
+         instagram: loading || !profile.profile.social ? '' : profile.profile.social.instagram,
+         youtube: loading || !profile.profile.social ? '' : profile.profile.social.youtube,
 
       })
 
