@@ -160,7 +160,7 @@ const CreateProfile = ({createProfile, history}) => {
                ))}
                </select>
                <br></br>
-               <small className="form-text">Sport Follow</small>
+               <small className="form-text">Sport Follow or Top Rope</small>
                <select
                   name="sportFollow"
                   value={sportFollow}

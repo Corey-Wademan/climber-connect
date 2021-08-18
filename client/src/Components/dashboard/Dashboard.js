@@ -5,13 +5,14 @@ import { connect } from 'react-redux';
 import { deleteAccount, getCurrentProfile } from '../../actions/profile';
 import {Spinner} from '../Layout/Spinner';
 import AddClimb from '../profile-forms/AddClimb'
-import DashboardActions from './DashboardActions';
 
 
 const Dashboard = ({ getCurrentProfile, deleteAccount, auth: { user }, profile: { profile, loading } }) => {
    useEffect(() => {
       getCurrentProfile();
    }, [getCurrentProfile]);
+
+   console.log(profile)
    
    return loading && profile === null 
    ? <Spinner /> 
@@ -24,20 +25,30 @@ const Dashboard = ({ getCurrentProfile, deleteAccount, auth: { user }, profile: 
             </p>
          
             {profile !== null ?
-            <div className='dash-actions'>
-               <DashboardActions 
-                  profile={profile.profile} 
-                  />
-               <div className="my-2">
-                  <button className="btn btn-danger" onClick={() => deleteAccount()}>
-                     <i className="fas fa-user-times"></i> Delete Account
-                  </button>
-               </div>
-            </div> :
-            <Fragment>
-               <p>You have not yet created a profile, join the community and add some info!</p>
-               <Link to="/create-profile" className='btn btn-primary my-1'>Create Profile</Link>
-            </Fragment>}
+               <div className='dash-actions'>
+                  <div className="dash-buttons">
+                     <Link to={`/profile/${user._id}`} 
+                           className="btn btn-ocean"
+                           style={{backgroundColor:'#3f729b'}}>
+                        <i className="fas fa-user-circle text-primary"
+                           style={{color: 'white'}}></i> View Profile
+                     </Link>
+                     <Link to="edit-profile" className="btn btn-light">
+                        <i className="fas fa-user-circle text-primary"
+                           style={{color: 'white'}}></i> Edit Profile
+                     </Link>
+                  </div>
+                  <div className="my-2">
+                     <button className="btn btn-danger" onClick={() => deleteAccount()}>
+                        <i className="fas fa-user-times"></i> Delete Account
+                     </button>
+                  </div>
+               </div> 
+            :
+               <Fragment>
+                  <p>You have not yet created a profile, join the community and add some info!</p>
+                  <Link to="/create-profile" className='btn btn-primary my-1'>Create Profile</Link>
+               </Fragment>}
          </div>
         <AddClimb />    
       </div>;

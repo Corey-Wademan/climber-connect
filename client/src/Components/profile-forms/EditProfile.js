@@ -39,10 +39,10 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
          best_time: loading || !profile.profile.best_time ? '' : profile.profile.best_time,
          climbing_since: loading || !profile.profile.climbing_since ? '' : profile.profile.climbing_since,
          climbing_type: loading || !profile.profile.climbing_type ? '' : profile.profile.climbing_type,
-         tradLead: loading || !profile.profile.leads.tradLead ? '' : profile.profile.leads.tradLead,
-         sportLead: loading || !profile.profile.leads.sportLead ? '' : profile.profile.leads.sportLead,
-         tradFollow: loading || !profile.profile.follows.tradFollow ? '' : profile.profile.follows.tradFollow,
-         sportFollow: loading || !profile.profile.follows.sportFollow ? '' : profile.profile.follows.sportFollow,
+         tradLead: loading || !profile.profile.leads ? '' : profile.profile.leads.tradLead,
+         sportLead: loading || !profile.profile.leads ? '' : profile.profile.leads.sportLead,
+         tradFollow: loading || !profile.profile.follows ? '' : profile.profile.follows.tradFollow,
+         sportFollow: loading || !profile.profile.follows ? '' : profile.profile.follows.sportFollow,
          additional_info: loading || !profile.profile.additional_info ? '' : profile.profile.additional_info,
          twitter: loading || !profile.profile.social ? '' : profile.profile.social.twitter,
          facebook: loading || !profile.profile.social ? '' : profile.profile.social.facebook,
@@ -182,7 +182,7 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
                ))}
                </select>
                <br></br>
-               <small className="form-text">Sport Follow</small>
+               <small className="form-text">Sport Follow or Top Rope</small>
                <select
                   name="sportFollow"
                   value={sportFollow}
@@ -257,10 +257,9 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
                <input type="text" placeholder="Instagram URL" name="instagram" value={instagram} onChange={e => onChange(e)}/>
             </div>
          </Fragment>}
-
         
         <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
+       
       </form>
       </Fragment>
    )
