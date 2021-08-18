@@ -28,11 +28,16 @@ const ProgressChart = ({climbs}) => {
 	
 
 	const data = [
-		{name: total.at(-1).date.slice(5,10), Grade: total.at(-1).grade},
-		{name: total.at(-2).date.slice(5,10), Grade: total.at(-2).grade},
-		{name: total.at(-3).date.slice(5,10), Grade: total.at(-3).grade},
-		{name: total.at(-4).date.slice(5,10), Grade: total.at(-4).grade},
-		{name: total.at(-5).date.slice(5,10), Grade: total.at(-5).grade}
+		!total.at(-1) ? {name: '', Grade: ''} 
+			:	{name: total.at(-1).date.slice(5,10), Grade: total.at(-1).grade},
+		!total.at(-2) ? {name: '', Grade: ''} 
+			: {name: total.at(-2).date.slice(5,10), Grade: total.at(-2).grade},
+		!total.at(-3) ? {name: '', Grade: ''} 
+			: {name: total.at(-3).date.slice(5,10), Grade: total.at(-3).grade},
+		!total.at(-4) ? {name: '', Grade: ''} 
+			: {name: total.at(-4).date.slice(5,10), Grade: total.at(-4).grade},
+		!total.at(-5) ? {name: '', Grade: ''} 
+			: {name: total.at(-5).date.slice(5,10), Grade: total.at(-5).grade}
 	]
 
 	 
@@ -48,6 +53,7 @@ const ProgressChart = ({climbs}) => {
 				<CartesianGrid strokeDasharray="3 3"/>
 				<XAxis 
 					dataKey='name'
+					reversed='true'
 					interval={0}
 					label={{value: 'Date', position: 'insideBottom', offset: -5}}
 					/>

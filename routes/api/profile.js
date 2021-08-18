@@ -17,7 +17,9 @@ router.get('/me', auth, async (req, res) => {
         if (!profile) {
             return res.status(404).json({ msg: 'There is no profile for this user' });
         }
-        res.json(profile);
+        const climbs = await Climb.find({ user: req.params.user_id});
+
+	    res.json({profile, climbs}) 
     } catch (err) {
         console.log(err.message);
         res.status(500).send("Server Error")
@@ -40,16 +42,16 @@ router.get('/', async (req, res) => {
 // Get profile by user id // Public 
 router.get('/user/:user_id', async (req, res) => {
     try {
+
         const profile = await Profile.findOne({ user: req.params.user_id })
         .populate('user', ['name', 'avatar'])
-        .populate('climbs');
         if (!profile) {
             return res.status(400).send({msg: 'Profile not found'})
         }
 
-        const climbs = await Climb.find({ user: req.params.user_id});
-        
-		res.json({profile, climbs})
+       const climbs = await Climb.find({ user: req.params.user_id});
+
+	    res.json({profile, climbs})  
     } catch (err) {
         console.log(err.message);
         if (err.kind === 'ObjectId') return res.status(400).send({ msg: 'Profile not found' });

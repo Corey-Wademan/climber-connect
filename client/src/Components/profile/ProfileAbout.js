@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Fragment } from 'react'
 import formatDate from '../../utils/formatDate'
 
-const ProfileAbout = ({ profile: { 
+const ProfileAbout = ({ profile: {
    profile: {
       climbing_type,
       preferred_belay_device,
@@ -14,7 +14,7 @@ const ProfileAbout = ({ profile: {
       climbing_since,
       user: {name}
    }
-} }) => {
+}}) => {
    
    return (
       <div className="profile-about bg-light p-2"> 

@@ -11,9 +11,11 @@ import DashboardActions from './DashboardActions';
 const Dashboard = ({ getCurrentProfile, deleteAccount, auth: { user }, profile: { profile, loading } }) => {
    useEffect(() => {
       getCurrentProfile();
-   }, [getCurrentProfile]); 
-
-   return loading && profile === null ? <Spinner /> :
+   }, [getCurrentProfile]);
+   
+   return loading && profile === null 
+   ? <Spinner /> 
+   :
       <div className='dash-container'>
          <div style={{display: 'flex', flexDirection: 'column'}}>
             <h1 className='large text-primary'>Dashboard</h1>
@@ -24,7 +26,7 @@ const Dashboard = ({ getCurrentProfile, deleteAccount, auth: { user }, profile: 
             {profile !== null ?
             <div className='dash-actions'>
                <DashboardActions 
-                  profile={profile} 
+                  profile={profile.profile} 
                   />
                <div className="my-2">
                   <button className="btn btn-danger" onClick={() => deleteAccount()}>
