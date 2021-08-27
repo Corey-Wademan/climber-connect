@@ -156,7 +156,7 @@ img {
 .row {
   display: flex;
   flex-direction: row;
-
+  justify-content: center;
 }
 
 .list-item {
@@ -657,7 +657,7 @@ button {
   text-align: center;
 }
 
-/* Profile Page */ @media (max-width: 800px) {  
+/* Profile Page */ @media (max-width: 900px) {  
   .profile-main img,
   .profile img {
     border-radius: 50%;
@@ -670,14 +670,12 @@ button {
     display: flex;
     flex-direction: column;
     align-content: center;
-    justify-content: center;
     align-items: center;
     justify-content: center;
     text-align: center;
     border-radius: 15px;
-    background-color: var(--stone);
     margin-bottom: 2rem;
-    width: 30%;
+    width: 90vw;
   }
 
   .profile-main, .profile-about {
@@ -954,4 +952,8 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 990px) {
+  .charts-row {flex-direction: column;}
 }
