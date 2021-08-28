@@ -566,6 +566,7 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   line-height: 1.8;
   margin-bottom: 1rem;
@@ -925,8 +926,7 @@ button {
   flex-direction: column;
   align-items: center;
   width: 80%;
-  min-height: 100%;
-  height: 120px;
+  height: 100%;
   color: white;
   background: var(--mint);
   border: var(--stone) 1px solid;
@@ -938,14 +938,19 @@ button {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
+  text-align: center;
   align-items: center;
-  width: 60vw;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.qk-stats > h3 {
+  margin: 0 30px;
 }
 .charts-row {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 55%;
 }
 .chart {
   display: flex;

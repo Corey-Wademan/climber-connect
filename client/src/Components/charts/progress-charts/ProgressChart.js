@@ -1,6 +1,6 @@
 import React, {Fragment, useState} from 'react'
 import PropTypes from 'prop-types'
-import {  LineChart,Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts'
+import {  LineChart,Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, Legend } from 'recharts'
 
 const ProgressChart = ({climbs}) => {
 	const [currentView, setCurrentView] = useState('Lead')
@@ -66,72 +66,72 @@ const ProgressChart = ({climbs}) => {
 			{
 				currentView == 'Lead'
 				? (
-					<div className='chart'>
-						<h3>Recently Logged Sport Climbs</h3>
-						<LineChart
-							width={800}
-							height={300}
-							data={sportData}
-							margin={{top: 5, right: 30, left: 20, bottom: 5}}
-						>
-						<CartesianGrid strokeDasharray="3 3"/>
-						<XAxis 
-							dataKey='name'
-							reversed='true'
-							interval={0}
-							label={{value: 'Date', position: 'insideBottom', offset: -5}}
+					<>
+						<h3 style={{fontSize: '18px', textAlign: 'center'}}>Recent Lead Climbs</h3>
+						<ResponsiveContainer height='100%' width={450} minWidth={300}>
+							<LineChart
+								data={sportData}
+								margin={{top: 5, right: 30, left: 20, bottom: 5}}
+							>
+							<CartesianGrid strokeDasharray="3 3"/>
+							<XAxis 
+								dataKey='name'
+								reversed='true'
+								interval={0}
+								label={{value: 'Date', position: 'insideBottom', offset: -5}}
+								/>
+							<YAxis
+								interval={0}
+								type='number'
+								scale='linear'
+								domain={['dataMin', 'dataMax']}
+								tick={[5.0, 5.01, 5.02, 5.03, 5.04, 5.05, 5.06, 5.07, 5.08, 5.09, 5.10, 5.11, 5.12, 5.13, 5.14, 5.15]}
+								dataKey='Grade'
+								/>
+							<Tooltip />
+							<Legend />
+							<Line
+								type="monotone"
+								dataKey="Grade"
+								stroke="#8884d8"
+								activeDot={{ r: 8 }}
 							/>
-						<YAxis
-							interval={0}
-							type='number'
-							scale='linear'
-							domain={['dataMin', 'dataMax']}
-							tick={[5.0, 5.01, 5.02, 5.03, 5.04, 5.05, 5.06, 5.07, 5.08, 5.09, 5.10, 5.11, 5.12, 5.13, 5.14, 5.15]}
-							dataKey='Grade'
-							/>
-						<Tooltip />
-						<Legend />
-						<Line
-							type="monotone"
-							dataKey="Grade"
-							stroke="#8884d8"
-							activeDot={{ r: 8 }}
-						/>
-						</LineChart>
-					</div>
+							</LineChart>
+						</ResponsiveContainer>
+					</>
 				)
 				: (
 					<div className='chart'>
-						<h3>Recently Logged Boulder Climbs</h3>
-						<LineChart
-							width={800}
-							height={300}
-							data={boulderData}
-							margin={{top: 5, right: 30, left: 20, bottom: 5}}
-						>
-						<CartesianGrid strokeDasharray="3 3"/>
-						<XAxis 
-							dataKey='name'
-							reversed='true'
-							interval={0}
-							label={{value: 'Date', position: 'insideBottom', offset: -5}}
+						<h3>Recent Boulder Climbs</h3>
+						<ResponsiveContainer height='100%' width={450} minWidth={300}>
+							<LineChart
+								data={boulderData}
+								margin={{top: 5, right: 30, left: 20, bottom: 5}}
+							>
+							<CartesianGrid strokeDasharray="3 3"/>
+							<XAxis 
+								dataKey='name'
+								reversed='true'
+								interval={0}
+								label={{value: 'Date', position: 'insideBottom', offset: -5}}
+								/>
+							<YAxis
+								interval={0}
+								type='category'
+								scale='auto'
+								tick={["V0", "V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17"]}
+								dataKey='Grade'
+								/>
+							<Tooltip />
+							<Legend />
+							<Line
+								type="monotone"
+								dataKey="Grade"
+								stroke="#8884d8"
+								activeDot={{ r: 8 }}
 							/>
-						<YAxis
-							interval={0}
-							type='category'
-							scale='auto'
-							tick={["V0", "V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13", "V14", "V15", "V16", "V17"]}
-							dataKey='Grade'
-							/>
-						<Tooltip />
-						<Legend />
-						<Line
-							type="monotone"
-							dataKey="Grade"
-							stroke="#8884d8"
-							activeDot={{ r: 8 }}
-						/>
-						</LineChart>
+							</LineChart>
+						</ResponsiveContainer>	
 					</div>
 				)
 			}	
