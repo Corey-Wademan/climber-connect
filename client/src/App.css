@@ -579,6 +579,9 @@ button {
   padding: 1rem;
   font-size: 1rem;
 }
+  @media (max-width: 872px) {
+    .profile-col {width: 100%;}
+  }
 
 .profiles-btn {
   display: inline-block;
@@ -656,56 +659,6 @@ button {
   align-items: center;
   justify-content: space-around;
   text-align: center;
-}
-
-/* Profile Page */ @media (max-width: 900px) {  
-  .profile-main img,
-  .profile img {
-    border-radius: 50%;
-    height: 150px;
-    width: auto;
-    margin: 1rem 2rem;
-  }
-
-  .profile-header {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-radius: 15px;
-    margin-bottom: 2rem;
-    width: 90vw;
-  }
-
-  .profile-main, .profile-about {
-    width: 100%;
-  }
-
-  .climbing-type {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  
-  .profile-about, .profile-main {
-    display: flex ;   
-    text-align: center;
-    border-radius: 15px;
-    background-color: var(--stone);
-    margin: 1rem
-  }
-
-  .dash-buttons a {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.2rem;
-  }
-
-  .post a,
-  .post button {
-    padding: 0.3rem 0.4rem;
-  }
 }
 
                       /* Posts Page */
@@ -845,67 +798,6 @@ button {
   height: 100%;
   align-items: flex-end;
 }
-  
-                /* Mobile Styles */
-@media (max-width: 700px) {
-  .container {
-    margin-top: 8rem;
-  }
-
-  .hide-sm {
-    display: none;
-  }
-
-  /* Text Styles */
-  .x-large {
-    font-size: 3rem;
-  }
-
-  .large {
-    font-size: 2rem;
-  }
-
-  .lead {
-    font-size: 1rem;
-  }
-  
-            /* Navbar */
-  .navbar {
-    display: block;
-    text-align: center;
-  }
-
-  .navbar ul {
-    text-align: center;
-    justify-content: center;
-  }
-
-  .navbar h1 {
-    margin-bottom: 1rem;
-  }
-
-  .comment-details {
-    display: flex;
-    flex-direction: column; 
-    height: 100%;
-    align-items: flex-end;
-  }
-  .navbar .welcome {
-    display: none;
-  }
-  
-           /* Profiles Page */
-    .profiles {
-      display: flex;
-      flex-direction: column;      
-      text-align: center;
-      width: 100vw;
-    }
-  
-    .profile ul {
-      display: none;
-    }
-  }
 
       /* Climb Form */
 .climb-form-container {
@@ -959,6 +851,117 @@ button {
   justify-content: center;
 }
 
-@media (max-width: 990px) {
-  .charts-row {flex-direction: column;}
+          /* Mobile Styles */
+@media (max-width: 700px) {
+  .container {
+    margin-top: 8rem;
+  }
+
+  .hide-sm {
+    display: none;
+  }
+
+  /* Text Styles */
+  .x-large {
+    font-size: 3rem;
+  }
+
+  .large {
+    font-size: 2rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+  
+            /* Navbar */
+  .navbar {
+    display: block;
+    text-align: center;
+  }
+
+  .navbar ul {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .navbar h1 {
+    margin-bottom: 1rem;
+  }
+
+  .comment-details {
+    display: flex;
+    flex-direction: column; 
+    height: 100%;
+    align-items: flex-end;
+  }
+  .navbar .welcome {
+    display: none;
+  }
+  
+            /* Profiles Page */
+    .profiles {
+      display: flex;
+      flex-direction: column;      
+      text-align: center;
+    }
+  
+    .profile ul {
+      display: none;
+    }
+  }
+
+  /* Profile Page */ 
+@media (max-width: 900px) {  
+  .profile-main img,
+  .profile img {
+    border-radius: 50%;
+    height: 150px;
+    width: auto;
+    margin: 1rem 2rem;
+  }
+
+  .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    width: 90vw;
+  }
+
+  .profile-main, .profile-about {
+    width: 100%;
+  }
+
+  .climbing-type {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .profile-about, .profile-main {
+    display: flex ;   
+    text-align: center;
+    border-radius: 15px;
+    background-color: var(--stone);
+    margin: 1rem
+  }
+
+  .dash-buttons a {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.2rem;
+  }
+
+  .post a,
+  .post button {
+    padding: 0.3rem 0.4rem;
+  }
 }
+          /* Charts */
+  @media (max-width: 990px) {
+    .charts-row {flex-direction: column;}
+  }

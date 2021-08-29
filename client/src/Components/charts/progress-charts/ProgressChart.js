@@ -26,8 +26,6 @@ const ProgressChart = ({climbs}) => {
 		setCurrentView(e.target.value)
 	}
 
-	console.log(sportTotal)
-
 	// Filter and sorts boulder climbs
 	let g;
 	// const boulderTotal = climbs.filter(climb => climb.style === 'boulder').sort((a,b) => (g=s=>parseInt(s,32)%334+s)(a.grade)>g(b.grade)||-1)
@@ -101,8 +99,8 @@ const ProgressChart = ({climbs}) => {
 					</>
 				)
 				: (
-					<div className='chart'>
-						<h3>Recent Boulder Climbs</h3>
+					<>
+						<h3 style={{fontSize: '18px', textAlign: 'center'}}>Recent Boulder Climbs</h3>
 						<ResponsiveContainer height='100%' width={450} minWidth={300}>
 							<LineChart
 								data={boulderData}
@@ -132,7 +130,7 @@ const ProgressChart = ({climbs}) => {
 							/>
 							</LineChart>
 						</ResponsiveContainer>	
-					</div>
+					</>
 				)
 			}	
 		</div>

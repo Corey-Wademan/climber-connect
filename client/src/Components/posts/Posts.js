@@ -18,10 +18,10 @@ const Posts = ({getPosts, getCurrentProfile, profile: {profile}, auth: {isAuth},
 		return (
 			<Fragment>
 				<h3>
-					Only users can view posts, please 
+					Only users can view and interact with posts, please 
 					<Link to='/login'> login </Link> or
 					<Link to='/register'> create an account </Link>
-					to create & view posts
+					to start chatting
 				</h3>
 			</Fragment>
 		)
