@@ -54,7 +54,7 @@ const ProgressChart = ({climbs}) => {
 				currentView == 'Lead'
 				? (
 					<>
-						<h3 style={{fontSize: '18px', textAlign: 'center'}}>Recent Lead Climbs</h3>
+						<h3 style={{fontSize: '18px', textAlign: 'center', margin: '20px 0'}}>Recent Lead Climbs</h3>
 						<ResponsiveContainer height='100%' width={450} minWidth={300}>
 							<LineChart
 								data={sportData}
@@ -89,7 +89,7 @@ const ProgressChart = ({climbs}) => {
 				)
 				: (
 					<>
-						<h3 style={{fontSize: '18px', textAlign: 'center'}}>Recent Boulder Climbs</h3>
+						<h3 style={{fontSize: '18px', textAlign: 'center', margin: '20px 0'}}>Recent Boulder Climbs</h3>
 						<ResponsiveContainer height='100%' width={450} minWidth={300}>
 							<LineChart
 								data={boulderData}
