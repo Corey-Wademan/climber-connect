@@ -7,19 +7,8 @@ const ProgressChart = ({climbs}) => {
 
 
 	// Filter sport / trad climbs between <5.10 && >5.10 then sorts, then concat into totalRopeArr
-	const sportTotal = climbs.filter(climb => {
-		return ( 
-			climb.style !== 'boulder' 
-			&& climb.grade === '5.0' || climb.grade === '5.01' || climb.grade === '5.02' || climb.grade === '5.03' || climb.grade === '5.04' || climb.grade === '5.05' || climb.grade === '5.06' || climb.grade === '5.07' || climb.grade === '5.08' || climb.grade === '5.09' || climb.grade === '5.10' || climb.grade === '5.11' || climb.grade === '5.12' || climb.grade === '5.13' || climb.grade === '5.14' || climb.grade === '5.15'
-		)
-	})
-
-	const boulderTotal = climbs.filter(climb => {
-		return (
-			climb.style == 'boulder'
-			&& climb.grade === 'V0' || climb.grade === 'V1' || climb.grade === 'V2' || climb.grade === 'V3' || climb.grade === 'V4' || climb.grade === 'V5' || climb.grade === 'V6' || climb.grade === 'V7' || climb.grade === 'V8' || climb.grade === 'V9' || climb.grade === 'V10' || climb.grade === 'V11' || climb.grade === 'V12' || climb.grade === 'V13' || climb.grade === 'V14' || climb.grade === 'V15' || climb.grade === 'V16' || climb.grade === 'V17'
-		)
-	})
+	const sportTotal = climbs.filter(climb => climb.style !== 'boulder' ) 
+	const boulderTotal = climbs.filter(climb => climb.style == 'boulder' )
 
 	const handleView = e => {
 		e.preventDefault();
