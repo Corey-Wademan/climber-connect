@@ -19,7 +19,7 @@ const ProfileMain = ({ profile: {
             src={avatar}
             alt=""
           />
-         <h1 className="large">{name}</h1>
+         <h1 className="large" style={{fontFamily: 'Quicksand'}}>{name}</h1>
          <p>{age}</p>
          <p>{gender}</p>
          <p>{location}</p>

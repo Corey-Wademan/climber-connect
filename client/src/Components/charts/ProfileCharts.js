@@ -16,7 +16,7 @@ const ProfileCharts = ({profile: {climbs}}) => {
 	
 	return (
 		<div className='profile-chart-container'>
-			<div className='stats-top'>
+			<div className='stats-top' style={{fontFamily: 'Quicksand'}}>
 				<h1>Stats</h1>
 				<div className='qk-stats'>
 					<h3>Routes Logged: {climbs.length}</h3>

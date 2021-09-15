@@ -18,7 +18,7 @@ const ProfileAbout = ({ profile: {
    
    return (
       <div className="profile-about bg-light p-2"> 
-         <h2 className="text-primary text-center">Quick Glance</h2>
+         <h2 className="text-primary text-center" style={{fontFamily: 'Quicksand'}}>Quick Glance</h2>
          <p>{climbing_since && (<span>Climbing Since: {formatDate(climbing_since)}</span>)}</p>
          <div className='climbing-type'>
             <b>Climbs:</b> 
@@ -68,7 +68,7 @@ const ProfileAbout = ({ profile: {
          <div>
             {additional_info && (
                <Fragment>
-                  <h2 className="text-primary">About {name.trim().split(' ')[0]}</h2>
+                  <h2 className="text-primary" style={{fontFamily: 'Quicksand'}}>About {name.trim().split(' ')[0]}</h2>
                   <p>
                      {additional_info}
                   </p>
